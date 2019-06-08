@@ -6,7 +6,7 @@ import Analitics from './analitics';
 import "./styles.css";
 import "normalize.css";
 
-import Example from "./pages/example";
+import Example from "./pages/example/index.tsx";
 
 export const routes = (
   <Switch>

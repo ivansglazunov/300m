@@ -30,13 +30,14 @@ register(ignoreStyles.DEFAULT_EXTENSIONS, (mod, filename) => {
 require("@babel/polyfill");
 require("@babel/register")({
   ignore: [/\/(build|node_modules)\//],
-  presets: ["@babel/preset-env", "@babel/preset-react"],
+  presets: ["@babel/preset-env", "@babel/preset-react", ["@babel/preset-typescript", { allExtensions: true, isTSX: true }]],
   plugins: [
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-syntax-dynamic-import",
     "dynamic-import-node",
     "react-loadable/babel"
-  ]
+  ],
+  extensions: [".ts", ".js", ".tsx", ".jsx"],
 });
 
 // Now that the nonsense is over... load up the server entry point
