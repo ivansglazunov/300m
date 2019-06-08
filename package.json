@@ -81,8 +81,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "pre-push": "npm run bit"
+      "pre-commit": "pretty-quick --staged && npm run bit"
     }
   },
   "devDependencies": {
