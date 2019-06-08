@@ -12,7 +12,7 @@ export const SomePageComponent: any = ({
 }
 
 export default withTracker(() => {
-  const [currentUser, setCurrentUser] = useState(123);
+  const [currentUser, setCurrentUser] = useState(0);
 
   return {
     currentUser: currentUser,
