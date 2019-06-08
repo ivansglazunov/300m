@@ -11,7 +11,8 @@
 - `src/routes.js` тока описания роутинга
 - `src/pages/:pageName/index.js` оптимальное размещение страниц
 - `src/pages/:pageName/:componentName.js` оптимальное компонентов только для страницы
-- `src/components/:categoryName/:componentName.js` оптимальное универсальныъ компонентов
+- `src/components/:componentName/index.js` оптимальное универсальныъ компонентов
+- `src/components/:componentName/:innerUsedFiles.js` файлы используемые внутри компонента
 
 ### данные
 
@@ -23,7 +24,7 @@
 
 ```jsx
 import React, { useState } from "react";
-import withTracker from '../../simulate'; // получаем симуляцию метеоровского withTracker
+import withTracker from "../../simulate"; // получаем симуляцию метеоровского withTracker
 
 export default withTracker(() => {
   // вместо запросов к базе здесь можно создать демо данные хранимые прямо здесь в react hook стейтах
@@ -37,7 +38,7 @@ export default withTracker(() => {
   // - функции для изменения данных которые должны быть доступны в рамках страницы
   return {
     currentUser: currentUser,
-    setCurrentUser,
+    setCurrentUser
   };
 })(({ currentUser, setCurrentUser }) => {
   // эта функция компонент страницы, в пропсах она получает:
@@ -47,14 +48,18 @@ export default withTracker(() => {
   const [count, setCount] = useState(0);
 
   // грубый пример для понимания
-  
+
   // 1 button работа с псевдоданными данными из базы
   // 2 button работа с состояниями компонента
-  return <>
-    <button onClick={() => setCurrentUser(currentUser ? 0 : 123)}>currentUser: {currentUser}</button>
-    <button onClick={() => setCount(count + 1)}>{count}</button>
-  </>;
-})
+  return (
+    <>
+      <button onClick={() => setCurrentUser(currentUser ? 0 : 123)}>
+        currentUser: {currentUser}
+      </button>
+      <button onClick={() => setCount(count + 1)}>{count}</button>
+    </>
+  );
+});
 ```
 
 #### рекомендованный способ работы со страницами
@@ -63,28 +68,41 @@ export default withTracker(() => {
 
 ```jsx
 import React, { useState } from "react";
-import withTracker from '../../simulate';
+import withTracker from "../../simulate";
 
 export const SomePageComponent = ({
-  currentUser, setCurrentUser,
-  count, setCount,
+  currentUser,
+  setCurrentUser,
+  count,
+  setCount
 }) => {
-  return <>
-    <button onClick={() => setCurrentUser(currentUser ? 0 : 123)}>currentUser: {currentUser}</button>
-    <button onClick={() => setCount(count + 1)}>{count}</button>
-  </>;
-}
+  return (
+    <>
+      <button onClick={() => setCurrentUser(currentUser ? 0 : 123)}>
+        currentUser: {currentUser}
+      </button>
+      <button onClick={() => setCount(count + 1)}>{count}</button>
+    </>
+  );
+};
 
 export default withTracker(() => {
   const [currentUser, setCurrentUser] = useState(123);
 
   return {
     currentUser: currentUser,
-    setCurrentUser,
+    setCurrentUser
   };
 })(({ currentUser, setCurrentUser }) => {
   const [count, setCount] = useState(0);
 
-  return <SomePageComponent currentUser={currentUser} setCurrentUser={setCurrentUser} count={count} setCount={setCount}/>;
-})
+  return (
+    <SomePageComponent
+      currentUser={currentUser}
+      setCurrentUser={setCurrentUser}
+      count={count}
+      setCount={setCount}
+    />
+  );
+});
 ```
