@@ -70,7 +70,8 @@
     "eject": "react-scripts eject",
     "serve": "cross-env NODE_ENV=production node ./server/index.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "bit": "bit add src/components/* && bit tag --all -p && bit export ivansglazunov.300m"
   },
   "browserslist": [
     ">0.2%",
