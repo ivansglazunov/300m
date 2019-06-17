@@ -17,7 +17,6 @@ import {
   ServerStyleSheets,
   createGenerateClassName
 } from "@material-ui/styles";
-import theme from "../src/theme";
 import App, { routes } from "../src/routes";
 import manifest from "../build/asset-manifest.json";
 
@@ -65,11 +64,9 @@ export default (req, res) => {
 
       const routeMarkup = renderToString(
         sheets.collect(
-          <ThemeProvider theme={theme}>
-            <StaticRouter location={req.url} context={context}>
-              <App />
-            </StaticRouter>
-          </ThemeProvider>
+          <StaticRouter location={req.url} context={context}>
+            <App />
+          </StaticRouter>
         )
       );
 
