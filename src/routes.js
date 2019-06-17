@@ -6,7 +6,6 @@ import { ThemeProvider } from "@material-ui/styles";
 import Analitics from "./analitics";
 import theme from "./theme";
 
-import "./styles.css";
 import "normalize.css";
 
 import Example from "./pages/example/index.tsx";
