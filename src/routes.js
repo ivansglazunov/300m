@@ -8,12 +8,16 @@ import theme from "./theme";
 
 import "normalize.css";
 
-import Example from "./pages/example/index.tsx";
+import Profile from "./pages/profile/index.tsx";
+import ProjectsList from "./pages/projectsList/index.tsx";
+import User from "./pages/user/index.tsx";
 
 export const routes = (
   <ThemeProvider theme={theme}>
     <Switch>
-      <Route component={Example} />
+      <Route path="/user" component={User} />
+      <Route path="/projects-list" component={ProjectsList} />
+      <Route component={Profile} />
     </Switch>
   </ThemeProvider>
 );
