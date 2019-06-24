@@ -2,9 +2,8 @@ import React from "react";
 
 import { Grid, Card, CardContent, Avatar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles: any = makeStyles({
   avatar: {
     margin: 15,
     width: 150,
@@ -32,7 +31,7 @@ export default ({}) => {
         spacing={2}
       >
         <Typography component="h5" variant="h5" display="block" gutterBottom>
-          Сапрыкан Андрей Федорович
+          Сапрыкин Андрей Федорович
         </Typography>
         <Typography variant="overline" display="block">
           22.10.1981
