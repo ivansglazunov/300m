@@ -8,7 +8,9 @@ import {
   IconButton,
   InputBase,
   Divider,
-  TextField
+  TextField,
+  List,
+  ListItem
 } from "@material-ui/core";
 import { Star, Add, Build, Search } from "@material-ui/icons";
 
@@ -80,15 +82,24 @@ export default ({}) => {
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <form className={classes.container} noValidate autoComplete="off">
-            <TextField
-              id="outlined-dense"
-              label="Name"
-              className={classes.textField}
-              margin="dense"
-              variant="outlined"
-            />
-          </form>
+          <List>
+            <ListItem
+              component={Link}
+              to="/stage-who"
+              button
+              style={{ paddingLeft: 0 }}
+            >
+              <form className={classes.container} noValidate autoComplete="off">
+                <TextField
+                  id="outlined-dense"
+                  label="Name"
+                  className={classes.textField}
+                  margin="dense"
+                  variant="outlined"
+                />
+              </form>
+            </ListItem>
+          </List>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="caption" component="h2">

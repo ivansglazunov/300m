@@ -3,6 +3,8 @@ import { Route, Switch } from "react-router";
 
 import { ThemeProvider } from "@material-ui/styles";
 
+import "./i18n";
+
 import Analitics from "./analitics";
 import theme from "./theme";
 
@@ -19,6 +21,8 @@ import ProjectOwner from "./pages/projectOwner";
 import MembersList from "./pages/membersList";
 import ProjectStagesList from "./pages/projectStagesList";
 import Team from "./pages/team";
+import Stage from "./pages/stageWho";
+import MembersSearch from "./pages/membersSearch";
 
 const NotFounded = () => <div>404</div>;
 
@@ -35,6 +39,8 @@ export const routes = (
       <Route path="/members-list" component={MembersList} />
       <Route path="/project-stages-list" component={ProjectStagesList} />
       <Route path="/team" component={Team} />
+      <Route path="/stage-who" component={Stage} />
+      <Route path="/members-search" component={MembersSearch} />
       <Route path="/" component={Profile} />
       <Route component={NotFounded} />
     </Switch>

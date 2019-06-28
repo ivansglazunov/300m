@@ -1,18 +1,16 @@
 import React from "react";
 
-import {
-  Grid,
-  Typography,
-  Divider,
-  makeStyles,
-  Fab,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails
-} from "@material-ui/core";
-import { StarRate, Build, Add, ExpandMore } from "@material-ui/icons";
+import { Typography, makeStyles, List, Fab } from "@material-ui/core";
+import { Add } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
+
+import OneItem from "./item";
+import moment from "moment";
+
+// TODO юзеры должно быть элементом списка, иначе этого появляется куча дублирующих логик отрисовки одного и того-же по разному
+// я бы проверил можно ли ListItem размещать без List ИЛИ можно ли размещать в List ExapansionPanel, это бы многое упростило и позволило бы их чередовать
+// TODO добавил красную ссылку в draw.io, юзеры должны быть ссылками на их профили, что бы можно было понять кто это вообще такой
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -34,160 +32,38 @@ const useStyles = makeStyles(theme => ({
 
 export default ({}) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = panel => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
 
   return (
     <>
       <Typography gutterBottom component="h1" variant="h5" align="center">
         Members List
       </Typography>
-      <Grid container direction="row" justify="flex-start" alignItems="center">
-        <Grid item xs={8}>
-          <Typography gutterBottom variant="subtitle2">
-            Лазарев П.Т.
-            <br />
-            Short description of the person
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <StarRate />
-        </Grid>
-        {/* <Divider /> */}
-        <Grid item xs={12}>
-          <ExpansionPanel
-            expanded={expanded === "panel1"}
-            onChange={handleChange("panel1")}
-          >
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMore />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header"
-            >
-              <Grid item xs={8}>
-                <Typography className={classes.heading}>
-                  Стремянный переулок, 38 Москва, Россия, 115054
-                </Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography align="center" className={classes.secondaryHeading}>
-                  24 июля
-                  <br />
-                  10:30
-                </Typography>
-              </Grid>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>Short description of stage</Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel
-            expanded={expanded === "panel2"}
-            onChange={handleChange("panel2")}
-          >
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMore />}
-              aria-controls="panel2bh-content"
-              id="panel2bh-header"
-            >
-              <Grid item xs={8}>
-                <Typography className={classes.heading}>
-                  Стремянный переулок, 38 Москва, Россия, 115054
-                </Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography align="center" className={classes.secondaryHeading}>
-                  24 июля
-                  <br />
-                  10:30
-                </Typography>
-              </Grid>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>Short description of stage</Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        </Grid>
-        <Grid item xs={8}>
-          <Typography gutterBottom variant="subtitle2">
-            Семенов В.Ф.
-            <br />
-            Short description of the person
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Build />
-        </Grid>
-        <Grid item xs={12}>
-          <ExpansionPanel
-            expanded={expanded === "panel1"}
-            onChange={handleChange("panel1")}
-          >
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMore />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header"
-            >
-              <Grid item xs={8}>
-                <Typography className={classes.heading}>
-                  Стремянный переулок, 38 Москва, Россия, 115054
-                </Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography align="center" className={classes.secondaryHeading}>
-                  24 июля
-                  <br />
-                  10:30
-                </Typography>
-              </Grid>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>Short description of stage</Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel
-            expanded={expanded === "panel2"}
-            onChange={handleChange("panel2")}
-          >
-            <ExpansionPanelSummary
-              expandIcon={<ExpandMore />}
-              aria-controls="panel2bh-content"
-              id="panel2bh-header"
-            >
-              <Grid item xs={8}>
-                <Typography className={classes.heading}>
-                  Стремянный переулок, 38 Москва, Россия, 115054
-                </Typography>
-              </Grid>
-              <Grid item xs={4}>
-                <Typography align="center" className={classes.secondaryHeading}>
-                  24 июля
-                  <br />
-                  10:30
-                </Typography>
-              </Grid>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>Short description of stage</Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-        </Grid>
-        <Grid item xs={12}>
-          <Fab
-            variant="extended"
-            size="small"
-            color="primary"
-            aria-label="Add"
-            className={classes.margin}
-          >
-            <Add className={classes.extendedIcon} />
-            <span className={classes.textAlign}>member add</span>
-          </Fab>
-        </Grid>
-      </Grid>
+      <List>
+        <OneItem
+          name="Papa Johns"
+          stages={[
+            { address: "Москва, Ветошный пер. 12", start: moment() },
+            {
+              address: "Москва, Бурденко ул. 1",
+              start: moment().add(2, "days")
+            }
+          ]}
+        />
+        <OneItem name="Cap Sanders" stages={[]} />
+        <OneItem name="Ronald MacDonald" />
+      </List>
+      <Fab
+        variant="extended"
+        size="small"
+        color="primary"
+        aria-label="Add"
+        className={classes.margin}
+        component={Link}
+        to="/members-search"
+      >
+        <Add className={classes.extendedIcon} />
+        <span className={classes.textAlign}>member add</span>
+      </Fab>
     </>
   );
 };
