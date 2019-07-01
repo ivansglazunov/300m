@@ -8,15 +8,18 @@ import {
   ListItemSecondaryAction,
   Avatar,
   Checkbox,
-  Divider,
   makeStyles,
-  Fab,
+  Paper,
   TextField,
-  InputAdornment
+  InputAdornment,
+  Tabs,
+  Tab
 } from "@material-ui/core";
-import { Add, Search } from "@material-ui/icons";
+import { Search, ArrowRightAlt } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
+
+import { Area } from "../slice-area/index";
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -28,91 +31,129 @@ const useStyles = makeStyles(theme => ({
   },
   textAlign: {
     position: "relative",
-    top: 2
+    top: 2,
+    marginLeft: theme.spacing(1)
   }
 }));
 
 export default ({}) => {
   const classes = useStyles();
+  const [value, setValue] = React.useState("search");
+
+  function handleChange(event, newValue) {
+    setValue(newValue);
+  }
 
   return (
     <>
-      <TextField
-        id="outlined-search"
-        label="Search member"
-        type="search"
-        className={classes.textField}
-        margin="dense"
-        variant="outlined"
-        fullWidth
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <Search />
-            </InputAdornment>
-          )
-        }}
+      <Area
+        top={
+          <Tabs
+            value={value}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            onChange={handleChange}
+          >
+            <Tab value="search" label="Search" />
+            <Tab value="checked" label="Checked" />
+          </Tabs>
+        }
+        content={
+          <>
+            {value === "search" && (
+              <div style={{ padding: "0 20px" }}>
+                <TextField
+                  id="outlined-search"
+                  label="Search member"
+                  type="search"
+                  className={classes.textField}
+                  margin="dense"
+                  variant="outlined"
+                  fullWidth
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Search />
+                      </InputAdornment>
+                    )
+                  }}
+                />
+                <List>
+                  <ListItem dense component={Link} to="/user" TabContainerider>
+                    <ListItemAvatar>
+                      <Avatar
+                        alt="montagnik"
+                        src="https://96.img.avito.st/640x480/5475959896.jpg"
+                        className={classes.avatar}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary="Петров П.С."
+                      secondary="Short description of the worker"
+                    />
+                    <ListItemSecondaryAction>
+                      <Checkbox
+                        checked={false}
+                        value="checkedA"
+                        inputProps={{
+                          "aria-label": "primary checkbox"
+                        }}
+                      />
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                </List>
+              </div>
+            )}
+            {value === "checked" && (
+              <div>
+                <List>
+                  <ListItem dense component={Link} to="/user" divider>
+                    <ListItemAvatar>
+                      <Avatar
+                        alt="montagnik"
+                        src="https://96.img.avito.st/640x480/5475959896.jpg"
+                        className={classes.avatar}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary="Семенов Ф.А."
+                      secondary="Short description of the worker"
+                    />
+                    <ListItemSecondaryAction>
+                      <Checkbox
+                        checked={true}
+                        value="checkedA"
+                        inputProps={{
+                          "aria-label": "primary checkbox"
+                        }}
+                      />
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                </List>
+              </div>
+            )}
+          </>
+        }
+        bottom={
+          <Paper
+            square="false"
+            elevation="2"
+            style={{
+              backgroundColor: "#3f51b5"
+            }}
+          >
+            <List style={{ color: "#fff" }}>
+              <ListItem button component={Link} to="/select-stages">
+                <ListItemText primary="select stages for members" />
+                <ListItemSecondaryAction>
+                  <ArrowRightAlt className={classes.extendedIcon} />
+                </ListItemSecondaryAction>
+              </ListItem>
+            </List>
+          </Paper>
+        }
       />
-      <List>
-        <ListItem component={Link} to="/user" divider>
-          <ListItemAvatar>
-            <Avatar
-              alt="montagnik"
-              src="https://96.img.avito.st/640x480/5475959896.jpg"
-              className={classes.avatar}
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Семенов Ф.А."
-            secondary="Short description of the worker"
-          />
-          <ListItemSecondaryAction>
-            <Checkbox
-              checked={true}
-              value="checkedA"
-              inputProps={{
-                "aria-label": "primary checkbox"
-              }}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
-        <ListItem component={Link} to="/user"></ListItem>
-        <ListItem component={Link} to="/user" divider>
-          <ListItemAvatar>
-            <Avatar
-              alt="montagnik"
-              src="https://96.img.avito.st/640x480/5475959896.jpg"
-              className={classes.avatar}
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Петров П.С."
-            secondary="Short description of the worker"
-          />
-          <ListItemSecondaryAction>
-            <Checkbox
-              checked={false}
-              value="checkedA"
-              inputProps={{
-                "aria-label": "primary checkbox"
-              }}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
-        <ListItem component={Link} to="/user"></ListItem>
-      </List>
-      <Fab
-        variant="extended"
-        size="small"
-        color="primary"
-        aria-label="Add"
-        className={classes.margin}
-        component={Link}
-        to="/select-stages"
-      >
-        <Add className={classes.extendedIcon} />
-        <span className={classes.textAlign}>select stages for members</span>
-      </Fab>
     </>
   );
 };
