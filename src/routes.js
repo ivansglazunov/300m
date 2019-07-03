@@ -11,18 +11,18 @@ import theme from "./theme";
 import "normalize.css";
 
 import Profile from "./pages/profile/index";
-import ProjectsList from "./pages/projectsList/index";
+import ProjectsList from "./pages/projects-list/index";
 import User from "./pages/user/index";
-import ProjectInvitesList from "./pages/projectInvitesList/index";
-import TeamsList from "./pages/teamsList/index";
-import TeamInvitesList from "./pages/teamInvitesList/index";
-import ProjectMember from "./pages/projectMember";
-import ProjectOwner from "./pages/projectOwner";
-import MembersList from "./pages/membersList";
-import ProjectStagesList from "./pages/projectStagesList";
+import ProjectInvitesList from "./pages/project-invites-list/index";
+import TeamsList from "./pages/teams-list/index";
+import TeamInvitesList from "./pages/team-invites-list/index";
+import ProjectMember from "./pages/project-member";
+import ProjectOwner from "./pages/project-owner";
+import MembersList from "./pages/members-list";
+import ProjectStagesList from "./pages/project-stages-list";
 import Team from "./pages/team";
-import Stage from "./pages/stageWho";
-import MembersSearch from "./pages/membersSearch";
+import Stage from "./pages/stage-who";
+import MembersSearch from "./pages/members-search";
 
 const NotFounded = () => <div>404</div>;
 

@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 import {
-  Typography,
-  Divider,
-  makeStyles,
   List,
   ListItem,
-  ListItemText,
+  makeStyles,
+  Badge,
+  Typography,
   Card,
   CardContent,
   TextField,
@@ -22,10 +21,17 @@ import { Area } from "../slice-area/index";
 const useStyles = makeStyles(theme => ({
   margin: {
     margin: theme.spacing(1)
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1)
+  },
+  textAlign: {
+    position: "relative",
+    top: 2
   }
 }));
 
-export default ({ title = "Team Title", description = "Team description" }) => {
+export default ({ title = "Project Title", description = "1234567" }) => {
   const classes = useStyles();
   const [edit, setEdit] = useState(false);
   const [valueTit, setValueTitle] = useState(title);
@@ -40,20 +46,20 @@ export default ({ title = "Team Title", description = "Team description" }) => {
               <CardContent>
                 <TextField
                   fullWidth
+                  value={valueTit}
                   margin="dense"
                   label="Title"
                   variant="outlined"
-                  value={valueTit}
                   placeholder={title}
                   onChange={event => setValueTitle(event.target.value)}
                 />
                 <TextField
                   fullWidth
+                  value={valueDesc}
                   margin="dense"
                   label="Description"
                   variant="outlined"
                   multiline
-                  value={valueDesc}
                   placeholder={description}
                   onChange={event => setValueDesc(event.target.value)}
                 />
@@ -94,9 +100,9 @@ export default ({ title = "Team Title", description = "Team description" }) => {
                 <Edit />
               </IconButton>
               <Typography
-                gutterBottom
-                component="h1"
                 variant="h5"
+                component="h1"
+                gutterBottom
                 align="center"
               >
                 {title}
@@ -106,13 +112,19 @@ export default ({ title = "Team Title", description = "Team description" }) => {
               </Typography>
             </CardContent>
             <List>
-              <ListItem
-                alignItems="flex-start"
-                component={Link}
-                to="/members-list"
-              >
-                <ListItemText primary="Adjoins List" />
+              <ListItem component={Link} button to="/members-list">
+                Members List
               </ListItem>
+              <ListItem component={Link} button to="/project-stages-list">
+                Stages List
+              </ListItem>
+              <Badge
+                className={classes.margin}
+                badgeContent={2}
+                color="primary"
+              >
+                <ListItem button>ProfileNotification</ListItem>
+              </Badge>
             </List>
           </>
         )}

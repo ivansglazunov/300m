@@ -1,12 +1,22 @@
 import React from "react";
 
-import { Typography, makeStyles, List, Fab } from "@material-ui/core";
-import { Add } from "@material-ui/icons";
+import {
+  Typography,
+  makeStyles,
+  List,
+  Paper,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction
+} from "@material-ui/core";
+import { Add, ArrowRightAlt } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
 import OneItem from "./item";
 import moment from "moment";
+
+import { Area } from "../slice-area/index";
 
 // TODO юзеры должно быть элементом списка, иначе этого появляется куча дублирующих логик отрисовки одного и того-же по разному
 // я бы проверил можно ли ListItem размещать без List ИЛИ можно ли размещать в List ExapansionPanel, это бы многое упростило и позволило бы их чередовать
@@ -38,32 +48,42 @@ export default ({}) => {
       <Typography gutterBottom component="h1" variant="h5" align="center">
         Members List
       </Typography>
-      <List>
-        <OneItem
-          name="Papa Johns"
-          stages={[
-            { address: "Москва, Ветошный пер. 12", start: moment() },
-            {
-              address: "Москва, Бурденко ул. 1",
-              start: moment().add(2, "days")
-            }
-          ]}
-        />
-        <OneItem name="Cap Sanders" stages={[]} />
-        <OneItem name="Ronald MacDonald" />
-      </List>
-      <Fab
-        variant="extended"
-        size="small"
-        color="primary"
-        aria-label="Add"
-        className={classes.margin}
-        component={Link}
-        to="/members-search"
-      >
-        <Add className={classes.extendedIcon} />
-        <span className={classes.textAlign}>member add</span>
-      </Fab>
+      <Area
+        content={
+          <List>
+            <OneItem
+              name="Papa Johns"
+              stages={[
+                { address: "Москва, Ветошный пер. 12", start: moment() },
+                {
+                  address: "Москва, Бурденко ул. 1",
+                  start: moment().add(2, "days")
+                }
+              ]}
+            />
+            <OneItem name="Cap Sanders" stages={[]} />
+            <OneItem name="Ronald MacDonald" />
+          </List>
+        }
+        bottom={
+          <Paper
+            square="false"
+            elevation="2"
+            style={{
+              backgroundColor: "#3f51b5"
+            }}
+          >
+            <List style={{ color: "#fff" }}>
+              <ListItem button component={Link} to="/members-search">
+                <ListItemText primary="member add" />
+                <ListItemSecondaryAction>
+                  <ArrowRightAlt className={classes.extendedIcon} />
+                </ListItemSecondaryAction>
+              </ListItem>
+            </List>
+          </Paper>
+        }
+      />
     </>
   );
 };

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import withTracker from "../../simulate";
 
-import ProjectsList from "../../components/projectsList";
+import MembersSearch from "../../components/members-search";
 
 export default withTracker(() => {
   return {};
 })(({}) => {
-  return <ProjectsList />;
+  return <MembersSearch />;
 });
