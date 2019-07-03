@@ -23,6 +23,7 @@ import ProjectStagesList from "./pages/project-stages-list";
 import Team from "./pages/team";
 import Stage from "./pages/stage-who";
 import MembersSearch from "./pages/members-search";
+import StagesEditor from "./pages/stages-editor-list-item";
 
 const NotFounded = () => <div>404</div>;
 
@@ -41,6 +42,7 @@ export const routes = (
       <Route path="/team" component={Team} />
       <Route path="/stage-who" component={Stage} />
       <Route path="/members-search" component={MembersSearch} />
+      <Route path="/stages-editor" component={StagesEditor} />
       <Route path="/" component={Profile} />
       <Route component={NotFounded} />
     </Switch>

@@ -88,27 +88,6 @@ export default ({}) => {
             Stages of project
           </Typography>
         </Link>
-        {/* <Grid 
-          container
-          direction="row"
-          justify="flex-start"
-          alignItems="center"
-        >
-          <Grid item xs={6}>
-            <Typography variant="subtitle2">Стремянный переулок, 38
-Москва, Россия, 115054</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle2">15 июля<br/>15:30</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle2">Стремянный переулок, 38
-Москва, Россия, 115054</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="subtitle2">24 июля<br/>10:30</Typography>
-          </Grid>         
-        </Grid> */}
         <ExpansionPanel
           expanded={expanded === "panel1"}
           onChange={handleChange("panel1")}
