@@ -23,7 +23,7 @@ import ProjectStagesList from "./pages/project-stages-list";
 import Team from "./pages/team";
 import MembersSearch from "./pages/members-search";
 import StagesEditor from "./pages/stages-editor";
-import Stages from "./components/stages";
+import Stages from "./pages/stages";
 
 const NotFounded = () => <div>404</div>;
 

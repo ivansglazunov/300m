@@ -5,6 +5,6 @@ import StagesEditor from "../../components/stages-editor";
 
 export default withTracker(() => {
   return {};
-})(({}) => {
-  return <StagesEditor />;
+})(({ title, description, address, name }) => {
+  return <StagesEditor title="" description="" address="" name="" />;
 });
