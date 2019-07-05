@@ -15,8 +15,8 @@ import {
 
 import { Edit, KeyboardArrowLeft, Add } from "@material-ui/icons";
 
-import StagesEditorListItem from "../../components/stages-editor-list-item";
-import StagesItem from "../stages-editor-list-item/stages-item";
+import Stages from "../stages";
+import StagesItem from "../stages/stages-item";
 // import CancelSave from "../cancel-save";
 
 import { Area } from "../slice-area";
@@ -29,7 +29,7 @@ export default ({ title = "Project Title", name = "Cap.Sanders" }) => {
     <>
       {edit ? (
         <Area
-          content={<StagesEditorListItem name={name} />}
+          content={<Stages name={name} />}
           bottom={
             <Paper
               square="false"
