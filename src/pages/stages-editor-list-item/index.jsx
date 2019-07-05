@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import withTracker from "../../simulate";
 
-import Stage from "../../components/stage-who";
+import StagesEditorListItem from "../../components/stages-editor-list-item";
 
 export default withTracker(() => {
   return {};
 })(({}) => {
-  return <Stage />;
+  return <StagesEditorListItem />;
 });

@@ -9,7 +9,7 @@ import {
   ListItemText,
   ListItemSecondaryAction
 } from "@material-ui/core";
-import { Add, ArrowRightAlt } from "@material-ui/icons";
+import { KeyboardArrowRight } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
@@ -22,23 +22,7 @@ import { Area } from "../slice-area/index";
 // я бы проверил можно ли ListItem размещать без List ИЛИ можно ли размещать в List ExapansionPanel, это бы многое упростило и позволило бы их чередовать
 // TODO добавил красную ссылку в draw.io, юзеры должны быть ссылками на их профили, что бы можно было понять кто это вообще такой
 
-const useStyles = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1)
-  },
-  root: {
-    width: "100%"
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    flexBasis: "33.33%",
-    flexShrink: 0
-  },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary
-  }
-}));
+const useStyles = makeStyles(theme => ({}));
 
 export default ({}) => {
   const classes = useStyles();
@@ -77,7 +61,7 @@ export default ({}) => {
               <ListItem button component={Link} to="/members-search">
                 <ListItemText primary="member add" />
                 <ListItemSecondaryAction>
-                  <ArrowRightAlt className={classes.extendedIcon} />
+                  <KeyboardArrowRight />
                 </ListItemSecondaryAction>
               </ListItem>
             </List>
