@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   Typography,
-  Divider,
   makeStyles,
   List,
   ListItem,
@@ -11,12 +11,12 @@ import {
   CardContent,
   TextField,
   Button,
-  IconButton
+  IconButton,
+  Paper,
+  ListItemIcon
 } from "@material-ui/core";
-import { Edit } from "@material-ui/icons";
-
+import { Edit, ChevronLeft } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-
 import { Area } from "../slice-area/index";
 
 const useStyles = makeStyles(theme => ({
@@ -25,11 +25,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ title = "Team Title", description = "Team description" }) => {
+export default ({ title, description, onTransitionToTeamsList, adjoins }) => {
   const classes = useStyles();
   const [edit, setEdit] = useState(false);
   const [valueTit, setValueTitle] = useState(title);
   const [valueDesc, setValueDesc] = useState(description);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -82,39 +83,61 @@ export default ({ title = "Team Title", description = "Team description" }) => {
             }
           />
         ) : (
-          <>
-            <CardContent>
-              <IconButton
-                style={{ float: "right", padding: 0 }}
-                aria-label="Edit"
-                onClick={() => {
-                  setEdit(true);
+          <Area
+            content={
+              <>
+                <CardContent>
+                  <IconButton
+                    style={{ float: "right", padding: 0 }}
+                    aria-label="Edit"
+                    onClick={() => {
+                      setEdit(true);
+                    }}
+                  >
+                    <Edit />
+                  </IconButton>
+                  <Typography
+                    gutterBottom
+                    component="h1"
+                    variant="h5"
+                    align="center"
+                  >
+                    {title}
+                  </Typography>
+                  <Typography variant="body1" component="div">
+                    {description}
+                  </Typography>
+                </CardContent>
+                <List>
+                  <ListItem
+                    alignItems="flex-start"
+                    component={Link}
+                    to="/members-list"
+                  >
+                    <ListItemText primary={adjoins} />
+                  </ListItem>
+                </List>
+              </>
+            }
+            bottom={
+              <Paper
+                square="false"
+                elevation="2"
+                style={{
+                  backgroundColor: "#3f51b5"
                 }}
               >
-                <Edit />
-              </IconButton>
-              <Typography
-                gutterBottom
-                component="h1"
-                variant="h5"
-                align="center"
-              >
-                {title}
-              </Typography>
-              <Typography variant="body1" component="div">
-                {description}
-              </Typography>
-            </CardContent>
-            <List>
-              <ListItem
-                alignItems="flex-start"
-                component={Link}
-                to="/members-list"
-              >
-                <ListItemText primary="Adjoins List" />
-              </ListItem>
-            </List>
-          </>
+                <List style={{ color: "#fff" }}>
+                  <ListItem button onClick={onTransitionToTeamsList}>
+                    <ListItemIcon style={{ color: "#fff" }}>
+                      <ChevronLeft />
+                    </ListItemIcon>
+                    <ListItemText primary={t("back to the teams list")} />
+                  </ListItem>
+                </List>
+              </Paper>
+            }
+          />
         )}
       </Card>
     </>

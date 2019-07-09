@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import { MuiPickersUtilsProvider, DateTimePicker } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
@@ -24,8 +23,6 @@ import {
   CardContent,
   Button
 } from "@material-ui/core";
-
-import { Delete } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   margin: {

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useTranslation } from "react-i18next";
+
 import {
   Typography,
   makeStyles,
@@ -9,7 +11,7 @@ import {
   ListItemText,
   ListItemSecondaryAction
 } from "@material-ui/core";
-import { KeyboardArrowRight } from "@material-ui/icons";
+import { ChevronRight } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
@@ -24,14 +26,12 @@ import { Area } from "../slice-area/index";
 
 const useStyles = makeStyles(theme => ({}));
 
-export default ({}) => {
+export default ({ members, address }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <>
-      <Typography gutterBottom component="h1" variant="h5" align="center">
-        Members List
-      </Typography>
       <Area
         content={
           <List>
@@ -40,7 +40,7 @@ export default ({}) => {
               stages={[
                 { address: "Москва, Ветошный пер. 12", start: moment() },
                 {
-                  address: "Москва, Бурденко ул. 1",
+                  address: "",
                   start: moment().add(2, "days")
                 }
               ]}
@@ -59,9 +59,9 @@ export default ({}) => {
           >
             <List style={{ color: "#fff" }}>
               <ListItem button component={Link} to="/members-search">
-                <ListItemText primary="member add" />
+                <ListItemText primary={t("member add")} />
                 <ListItemSecondaryAction>
-                  <KeyboardArrowRight />
+                  <ChevronRight />
                 </ListItemSecondaryAction>
               </ListItem>
             </List>

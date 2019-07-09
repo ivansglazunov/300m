@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Grid, Card, CardContent, Avatar, Typography } from "@material-ui/core";
+import { Grid, Avatar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles: any = makeStyles({
+const useStyles = makeStyles({
   avatar: {
     margin: 15,
     width: 150,
@@ -11,17 +11,13 @@ const useStyles: any = makeStyles({
   }
 });
 
-export default ({}) => {
+export default ({ name, src, alt, date }) => {
   const classes = useStyles();
 
   return (
     <>
       <Grid container justify="center" alignItems="center">
-        <Avatar
-          alt="montagnik"
-          src="https://96.img.avito.st/640x480/5475959896.jpg"
-          className={classes.avatar}
-        />
+        <Avatar alt={alt} src={src} className={classes.avatar} />
       </Grid>
       <Grid
         container
@@ -31,10 +27,10 @@ export default ({}) => {
         spacing={2}
       >
         <Typography component="h5" variant="h5" display="block" gutterBottom>
-          Сапрыкин Андрей Федорович
+          {name}
         </Typography>
         <Typography variant="overline" display="block">
-          22.10.1981
+          {date}
         </Typography>
       </Grid>
     </>

@@ -1,7 +1,6 @@
 import React from "react";
 
 import {
-  Grid,
   Typography,
   Divider,
   makeStyles,
@@ -10,7 +9,7 @@ import {
   ListItemAvatar,
   ListItemText
 } from "@material-ui/core";
-import { Build, Add, Done, Clear } from "@material-ui/icons";
+import { Done, Clear } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 

@@ -10,6 +10,8 @@ import {
 } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 
+import { useTranslation } from "react-i18next";
+
 import { Link } from "react-router-dom";
 
 import { Area } from "../slice-area/index";
@@ -29,6 +31,7 @@ export default ({
   durationTo = "23.08",
   description = "short description of the stage"
 }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
   const [edit, setEdit] = useState(false);
 
@@ -59,11 +62,11 @@ export default ({
             }}
           >
             <List style={{ color: "#fff" }}>
-              <ListItem button>
+              <ListItem button component={Link} to={"/project-owner"}>
                 <ListItemIcon style={{ color: "#fff" }}>
                   <ChevronLeft />
                 </ListItemIcon>
-                <ListItemText primary="back" />
+                <ListItemText primary={t("back")} />
               </ListItem>
             </List>
           </Paper>

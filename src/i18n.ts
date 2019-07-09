@@ -9,7 +9,36 @@ moment.updateLocale("ru");
 const resources = {
   ru: {
     translation: {
-      user: "Пользователь"
+      user: "Пользователь",
+      description: "Описание",
+      title: "Название",
+      back: "Назад",
+      settings: "Настройки",
+      stage: "Этап",
+      address: "адрес",
+      "member add": "Добавить участника",
+      "select stages for members": "Выбрать этапы для участников",
+      "add members to stages": "Добавить участников в этапы",
+      cancel: "Отменить",
+      save: "Сохранить",
+      delete: "Удалить",
+      "Project List": "Список проектов",
+      "Stages List": "Список этапов",
+      "Members List": "Список участников",
+      "Project Invites List": "Список приглашений в проекты",
+      "Teams List": "Список команд",
+      "Team Invites List": "Список приглашений в команды",
+      "Profile Notifications": "Уведомления",
+      "Profile Notification": "Уведомление",
+      "Project title": "Название проекта",
+      "Date of Birth": "Дата рождения",
+      "back to the list of projects": "вернуться к списку проектов",
+      "project add": "добавить проект",
+      "short description of the project": "короткое описание проекта",
+      "back to the teams list": "вернуться к списку команд",
+      "Team title": "Название команды",
+      "Team description": "Описание команды",
+      "Adjoins list": "Список приглашенных"
     }
   }
 };

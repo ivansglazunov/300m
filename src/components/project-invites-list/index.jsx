@@ -4,15 +4,22 @@ import {
   Grid,
   Typography,
   Fab,
-  Divider,
   makeStyles,
   ExpansionPanel,
   ExpansionPanelSummary,
-  ExpansionPanelDetails
+  ExpansionPanelDetails,
+  ListItemText,
+  Button,
+  List,
+  Card,
+  ListItem,
+  ListItemSecondaryAction,
+  IconButton,
+  ButtonBase
 } from "@material-ui/core";
 import { Add, Clear, ExpandMore } from "@material-ui/icons";
 
-import { Link } from "react-router-dom";
+import StageForInvites from "./stage-for-invites";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -32,7 +39,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({}) => {
+export default ({
+  title,
+  name,
+  description,
+  address,
+  onUser,
+  onAccept,
+  onRefuse,
+  stages,
+  day,
+  time
+}) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -42,52 +60,85 @@ export default ({}) => {
 
   return (
     <>
+      <Card>
+        <List>
+          <ListItem>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item xs={8}>
+                <ListItemText
+                  primary={
+                    <Button
+                      onClick={onUser}
+                      style={{ textDecoration: "underline" }}
+                    >
+                      {name}
+                    </Button>
+                  }
+                  secondary={description}
+                />
+              </Grid>
+              <Grid item={4}>
+                <ListItemSecondaryAction>
+                  <ButtonBase onClick={onAccept}>
+                    <Button color="primary" edge="add" aria-label="add">
+                      <Add />
+                    </Button>
+                  </ButtonBase>
+                  <ButtonBase onClick={onRefuse}>
+                    <Button color="secondary" edge="clear" aria-label="clear">
+                      <Clear />
+                    </Button>
+                  </ButtonBase>
+                </ListItemSecondaryAction>
+              </Grid>
+            </Grid>
+          </ListItem>
+          <StageForInvites
+            address={address}
+            description={description}
+            day={day}
+            time={time}
+          />
+          <ListItem>
+            <ListItemText
+              style={{ textAlign: "center", paddingRight: 100 }}
+              primary={
+                <Button
+                  onClick={onUser}
+                  style={{ textDecoration: "underline" }}
+                >
+                  {name}
+                </Button>
+              }
+              secondary={description}
+            />
+            <ListItemSecondaryAction>
+              <ButtonBase>
+                <IconButton color="primary" edge="add" aria-label="add">
+                  <Add />
+                </IconButton>
+              </ButtonBase>
+              <ButtonBase>
+                <IconButton color="secondary" edge="clear" aria-label="clear">
+                  <Clear />
+                </IconButton>
+              </ButtonBase>
+            </ListItemSecondaryAction>
+          </ListItem>
+        </List>
+      </Card>
+
       <Grid
         container
         direction="column"
         justify="flex-start"
         alignItems="flex-start"
       >
-        <Link to="/user">
-          <Typography component="button" variant="h5">
-            Сапрыкин А.Ф.
-          </Typography>
-        </Link>
-        <Typography component="h1" variant="h6">
-          Name of project
-        </Typography>
-        <Typography variant="caption">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-          blanditiis tenetur unde suscipit, quam beatae rerum inventore
-          consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-          fugiat deleniti? Eum quasi quidem quibusdam.
-        </Typography>
-      </Grid>
-      <Grid container direction="row" justify="center" alignItems="center">
-        <Fab
-          size="small"
-          color="primary"
-          aria-label="Add"
-          className={classes.margin}
-        >
-          <Add />
-        </Fab>
-        <Fab size="small" aria-label="Clear" className={classes.margin}>
-          <Clear />
-        </Fab>
-      </Grid>
-      {/* <Divider variant="middle" /> */}
-      <Grid
-        container
-        direction="column"
-        justify="flex-start"
-        alignItems="flex-start"
-      >
-        <Link to="/user">
-          <Typography component="button" variant="h6">
-            Stages of project
-          </Typography>
-        </Link>
         <ExpansionPanel
           expanded={expanded === "panel1"}
           onChange={handleChange("panel1")}
@@ -98,9 +149,7 @@ export default ({}) => {
             id="panel1bh-header"
           >
             <Grid item xs={8}>
-              <Typography className={classes.heading}>
-                Стремянный переулок, 38 Москва, Россия, 115054
-              </Typography>
+              <Typography className={classes.heading}>{address}</Typography>
             </Grid>
             <Grid item xs={4}>
               <Typography align="center" className={classes.secondaryHeading}>
@@ -111,7 +160,7 @@ export default ({}) => {
             </Grid>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>Short description of stage</Typography>
+            <Typography></Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel
@@ -124,9 +173,7 @@ export default ({}) => {
             id="panel2bh-header"
           >
             <Grid item xs={8}>
-              <Typography className={classes.heading}>
-                Стремянный переулок, 38 Москва, Россия, 115054
-              </Typography>
+              <Typography className={classes.heading}>{address}</Typography>
             </Grid>
             <Grid item xs={4}>
               <Typography align="center" className={classes.secondaryHeading}>
@@ -137,7 +184,7 @@ export default ({}) => {
             </Grid>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <Typography>Short description of stage</Typography>
+            <Typography></Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </Grid>

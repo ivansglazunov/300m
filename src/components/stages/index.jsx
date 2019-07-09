@@ -1,30 +1,15 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
-
 import {
-  IconButton,
   List,
   ListItem,
   ListItemText,
   Paper,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  Button,
-  Typography,
-  Collapse
+  ListItemIcon
 } from "@material-ui/core";
 
-import {
-  Edit,
-  KeyboardArrowLeft,
-  Add,
-  ExpandLess,
-  ExpandMore,
-  Description
-} from "@material-ui/icons";
+import { Add } from "@material-ui/icons";
 
-import Stage from "../stage";
 import StagesItem from "./stages-item";
 
 import { Area } from "../slice-area";

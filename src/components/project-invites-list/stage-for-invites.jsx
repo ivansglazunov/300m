@@ -9,11 +9,12 @@ import {
   List,
   ListItemText,
   ListItem,
+  ListItemIcon,
   IconButton,
   ExpansionPanelActions
 } from "@material-ui/core";
 
-import { ExpandMore, ExpandLess, Edit } from "@material-ui/icons";
+import { ExpandMore, ExpandLess, Today, AccessTime } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -21,18 +22,13 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     margin: 0
+  },
+  svg: {
+    width: 17
   }
 }));
 
-export default ({
-  title,
-  description,
-  address,
-  name,
-  durationFrom,
-  durationTo,
-  onEdit
-}) => {
+export default ({ description, address, day, time }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -44,36 +40,66 @@ export default ({
     <>
       <ExpansionPanel expanded={open}>
         <ExpansionPanelSummary
-          // expandIcon={<ExpandMore />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
           className={classes.content}
+          style={{ margin: 0 }}
         >
           <List style={{ width: "100%", padding: 0 }}>
-            <ListItem
+            {/* <ListItem
               disableGutters={true}
               style={{ paddingTop: 0, paddingBottom: 0 }}
-            >
-              <ListItemText
-                primary={title}
-                secondary={
+            > */}
+            {!open ? (
+              <ListItem
+                fullWidth
+                disableGutters={true}
+                style={{ paddingTop: 0, paddingBottom: 0 }}
+              >
+                <ListItemText
+                  secondary={
+                    <Typography variant="caption">
+                      {address}
+                      <br />
+                      <Today className={classes.svg} />
+                      {day}&emsp;
+                      <AccessTime className={classes.svg} />
+                      {time}
+                    </Typography>
+                  }
+                />
+              </ListItem>
+            ) : null}
+
+            {/* <ListItemText
+                primary={
                   !open ? (
+                    <>
                     <div>
                       <Typography variant="caption">
                         {address}
+                      </Typography>
+                      <Typography variant="caption">
+                        <Today className={classes.svg} />{day}&emsp;<AccessTime className={classes.svg} />{time}
+                      </Typography>
+                      <Typography variant="caption">
+                        {address}
                         <br />
-                        {durationFrom}-{durationTo}
+                        <Today className={classes.svg} />{day}&emsp;<AccessTime className={classes.svg} />{time}
                       </Typography>
                     </div>
+                    <div>
+                      <Typography variant="caption">
+                        <Today className={classes.svg} />{day}&emsp;<AccessTime className={classes.svg} />{time}
+                      </Typography>
+                    </div>
+                    </>
                   ) : null
                 }
-              />
-            </ListItem>
+              /> */}
+            {/* </ListItem> */}
           </List>
           <ExpansionPanelActions style={{ width: "100%", padding: 0 }}>
-            <IconButton aria-label="Edit" onClick={onEdit}>
-              <Edit />
-            </IconButton>
             <IconButton onClick={handleClick}>
               {open ? <ExpandLess /> : <ExpandMore />}
             </IconButton>
@@ -91,25 +117,23 @@ export default ({
               disableGutters={true}
               style={{ paddingTop: 0, paddingBottom: 0 }}
             >
-              <ListItemText
-                primary={
-                  <>
-                    {durationFrom}-{durationTo}
-                  </>
-                }
-              />
-            </ListItem>
-            <ListItem
-              disableGutters={true}
-              style={{ paddingTop: 0, paddingBottom: 0 }}
-            >
               <ListItemText primary={address} />
             </ListItem>
             <ListItem
               disableGutters={true}
               style={{ paddingTop: 0, paddingBottom: 0 }}
             >
-              <ListItemText primary={name} />
+              {/* <Today className={classes.svg} />{day}&emsp;<AccessTime className={classes.svg} />{time} */}
+              <ListItemText
+                primary={
+                  <>
+                    <Today className={classes.svg} />
+                    {day}&emsp;
+                    <AccessTime className={classes.svg} />
+                    {time}
+                  </>
+                }
+              />
             </ListItem>
           </List>
         </ExpansionPanelDetails>

@@ -1,4 +1,7 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+
 import {
   List,
   ListItem,
@@ -7,27 +10,15 @@ import {
   makeStyles,
   Paper
 } from "@material-ui/core";
-import { Star, Build, ArrowRightAlt } from "@material-ui/icons";
-
-import { Link } from "react-router-dom";
+import { Star, Build, ChevronRight } from "@material-ui/icons";
 
 import { Area } from "../slice-area/index";
 
-const useStyles = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1)
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1)
-  },
-  textAlign: {
-    position: "relative",
-    top: 2
-  }
-}));
+const useStyles = makeStyles(theme => ({}));
 
-export default ({}) => {
+export default ({ title, description }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -35,19 +26,13 @@ export default ({}) => {
         content={
           <List>
             <ListItem button divider component={Link} to="/project-owner">
-              <ListItemText
-                primary="ProjectItem"
-                secondary="ProjectShortDescription"
-              />
+              <ListItemText primary={title} secondary={description} />
               <ListItemSecondaryAction>
                 <Star />
               </ListItemSecondaryAction>
             </ListItem>
             <ListItem button divider component={Link} to="/project-member">
-              <ListItemText
-                primary="ProjectItem"
-                secondary="ProjectShortDescription"
-              />
+              <ListItemText primary={title} secondary={description} />
               <ListItemSecondaryAction>
                 <Build />
               </ListItemSecondaryAction>
@@ -64,9 +49,9 @@ export default ({}) => {
           >
             <List style={{ color: "#fff" }}>
               <ListItem button component={Link} to="/project-owner">
-                <ListItemText primary="project add" />
+                <ListItemText primary={t("project add")} />
                 <ListItemSecondaryAction>
-                  <ArrowRightAlt className={classes.extendedIcon} />
+                  <ChevronRight />
                 </ListItemSecondaryAction>
               </ListItem>
             </List>

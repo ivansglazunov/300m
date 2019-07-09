@@ -1,22 +1,13 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { makeStyles, CardContent, TextField, Button } from "@material-ui/core";
-import { Edit } from "@material-ui/icons";
-
-import { Link } from "react-router-dom";
 
 import { Area } from "../slice-area/index";
 
 const useStyles = makeStyles(theme => ({
   margin: {
     margin: theme.spacing(1)
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1)
-  },
-  textAlign: {
-    position: "relative",
-    top: 2
   }
 }));
 
@@ -29,6 +20,7 @@ export default ({
   const classes = useStyles();
   const [valueTit, setValueTitle] = useState(title);
   const [valueDesc, setValueDesc] = useState(description);
+  const { t } = useTranslation();
 
   return (
     <Area
@@ -38,7 +30,7 @@ export default ({
             fullWidth
             value={valueTit}
             margin="dense"
-            label="Title"
+            label={t("title")}
             variant="outlined"
             placeholder={title}
             onChange={event => setValueTitle(event.target.value)}
@@ -47,7 +39,7 @@ export default ({
             fullWidth
             value={valueDesc}
             margin="dense"
-            label="Description"
+            label={t("description")}
             variant="outlined"
             multiline
             placeholder={description}
@@ -58,14 +50,14 @@ export default ({
       bottom={
         <>
           <Button className={classes.margin} onClick={onCancelButton}>
-            Cancel
+            {t("cancel")}
           </Button>
           <Button
             color="primary"
             className={classes.margin}
             onClick={onSaveButton}
           >
-            Save
+            {t("save")}
           </Button>
         </>
       }

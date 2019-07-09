@@ -22,23 +22,23 @@ export default ({}) => {
         <ListItem button component={Link} to="/user">
           {t("user")}
         </ListItem>
-        <ListItem button>Settings</ListItem>
+        <ListItem button>{t("settings")}</ListItem>
         <ListItem button component={Link} to="/projects-list">
-          ProjectsListLink
+          {t("Project List")}
         </ListItem>
         <ListItem button component={Link} to="/project-invites-list">
-          ProjectInvitesListLink
+          {t("Project Invites List")}
         </ListItem>
         <ListItem button component={Link} to="/teams-list">
-          TeamsListLink
+          {t("Teams List")}
         </ListItem>
         <ListItem button component={Link} to="/team-invites-list">
-          TeamInvitesListLink
+          {t("Team Invites List")}
         </ListItem>
-        <ListItem button>ProfileNotifications</ListItem>
+        <ListItem button>{t("Profile Notifications")}</ListItem>
         <List>
           <Badge className={classes.margin} badgeContent={2} color="primary">
-            <ListItem button>ProfileNotification</ListItem>
+            <ListItem button>{t("Profile Notification")}</ListItem>
           </Badge>
         </List>
       </List>
