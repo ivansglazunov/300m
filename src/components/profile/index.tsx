@@ -3,6 +3,7 @@ import React from "react";
 import { List, ListItem, Badge, makeStyles } from "@material-ui/core";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -13,12 +14,13 @@ const useStyles = makeStyles(theme => ({
 
 export default ({}) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <>
       <List>
         <ListItem button component={Link} to="/user">
-          User
+          {t("user")}
         </ListItem>
         <ListItem button>Settings</ListItem>
         <ListItem button component={Link} to="/projects-list">

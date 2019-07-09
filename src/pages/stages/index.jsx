@@ -5,6 +5,15 @@ import Stages from "../../components/stages";
 
 export default withTracker(() => {
   return {};
-})(({}) => {
-  return <Stages />;
+})(({ history }) => {
+  return (
+    <Stages
+      onClick={() => {
+        history.push("/");
+      }}
+      onEdit={() => {
+        history.push("/stage");
+      }}
+    />
+  );
 });

@@ -31,103 +31,44 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ title = "Project Title", description = "1234567" }) => {
+export default ({
+  title = "Project Title",
+  description = "1234567",
+  onEdit
+}) => {
   const classes = useStyles();
-  const [edit, setEdit] = useState(false);
   const [valueTit, setValueTitle] = useState(title);
   const [valueDesc, setValueDesc] = useState(description);
 
   return (
     <>
       <Card>
-        {edit ? (
-          <Area
-            content={
-              <CardContent>
-                <TextField
-                  fullWidth
-                  value={valueTit}
-                  margin="dense"
-                  label="Title"
-                  variant="outlined"
-                  placeholder={title}
-                  onChange={event => setValueTitle(event.target.value)}
-                />
-                <TextField
-                  fullWidth
-                  value={valueDesc}
-                  margin="dense"
-                  label="Description"
-                  variant="outlined"
-                  multiline
-                  placeholder={description}
-                  onChange={event => setValueDesc(event.target.value)}
-                />
-              </CardContent>
-            }
-            bottom={
-              <>
-                <Button
-                  className={classes.margin}
-                  onClick={() => {
-                    setEdit(false);
-                  }}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  color="primary"
-                  className={classes.margin}
-                  onClick={() => {
-                    setEdit(false);
-                  }}
-                >
-                  Save
-                </Button>
-              </>
-            }
-          />
-        ) : (
-          <>
-            <CardContent>
-              <IconButton
-                style={{ float: "right", padding: 0 }}
-                aria-label="Edit"
-                onClick={() => {
-                  setEdit(true);
-                }}
-              >
-                <Edit />
-              </IconButton>
-              <Typography
-                variant="h5"
-                component="h1"
-                gutterBottom
-                align="center"
-              >
-                {title}
-              </Typography>
-              <Typography variant="body1" component="div">
-                {description}
-              </Typography>
-            </CardContent>
-            <List>
-              <ListItem component={Link} button to="/members-list">
-                Members List
-              </ListItem>
-              <ListItem component={Link} button to="/project-stages-list">
-                Stages List
-              </ListItem>
-              <Badge
-                className={classes.margin}
-                badgeContent={2}
-                color="primary"
-              >
-                <ListItem button>ProfileNotification</ListItem>
-              </Badge>
-            </List>
-          </>
-        )}
+        <CardContent>
+          <IconButton
+            style={{ float: "right", padding: 0 }}
+            aria-label="Edit"
+            onClick={onEdit}
+          >
+            <Edit />
+          </IconButton>
+          <Typography variant="h5" component="h1" gutterBottom align="center">
+            {title}
+          </Typography>
+          <Typography variant="body1" component="div">
+            {description}
+          </Typography>
+        </CardContent>
+        <List>
+          <ListItem component={Link} button to="/members-list">
+            Members List
+          </ListItem>
+          <ListItem component={Link} button to="/project-stages-list">
+            Stages List
+          </ListItem>
+          <Badge className={classes.margin} badgeContent={2} color="primary">
+            <ListItem button>ProfileNotification</ListItem>
+          </Badge>
+        </List>
       </Card>
     </>
   );

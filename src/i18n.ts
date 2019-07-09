@@ -8,7 +8,9 @@ moment.updateLocale("ru");
 
 const resources = {
   ru: {
-    translation: {}
+    translation: {
+      user: "Пользователь"
+    }
   }
 };
 

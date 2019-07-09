@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   List,
@@ -13,13 +13,28 @@ import {
   TextField,
   InputAdornment,
   Tabs,
-  Tab
+  Tab,
+  Badge,
+  withStyles
 } from "@material-ui/core";
 import { Search, ArrowRightAlt } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
 import { Area } from "../slice-area/index";
+
+const StyledBadge = withStyles(theme => ({
+  badge: {
+    top: "50%",
+    right: -3,
+    // The border color match the background color.
+    border: `2px solid ${
+      theme.palette.type === "light"
+        ? theme.palette.grey[200]
+        : theme.palette.grey[900]
+    }`
+  }
+}))(Badge);
 
 const useStyles = makeStyles(theme => ({
   textField: {
@@ -38,7 +53,7 @@ const useStyles = makeStyles(theme => ({
 
 export default ({}) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState("search");
+  const [value, setValue] = useState("search");
 
   function handleChange(event, newValue) {
     setValue(newValue);
@@ -56,7 +71,14 @@ export default ({}) => {
             onChange={handleChange}
           >
             <Tab value="search" label="Search" />
-            <Tab value="checked" label="Checked" />
+            <Tab
+              value="checked"
+              label={
+                <StyledBadge>
+                  <span>Checked</span>
+                </StyledBadge>
+              }
+            />
           </Tabs>
         }
         content={
@@ -144,7 +166,7 @@ export default ({}) => {
             }}
           >
             <List style={{ color: "#fff" }}>
-              <ListItem button component={Link} to="/select-stages">
+              <ListItem button component={Link} to="/select-stages-for-members">
                 <ListItemText primary="select stages for members" />
                 <ListItemSecondaryAction>
                   <ArrowRightAlt className={classes.extendedIcon} />

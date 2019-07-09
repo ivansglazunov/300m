@@ -20,10 +20,12 @@ import ProjectMember from "./pages/project-member";
 import ProjectOwner from "./pages/project-owner";
 import MembersList from "./pages/members-list";
 import ProjectStagesList from "./pages/project-stages-list";
+import ProjectEditable from "./pages/project-editable";
 import Team from "./pages/team";
 import MembersSearch from "./pages/members-search";
-import StagesEditor from "./pages/stages-editor";
+import Stage from "./pages/stage";
 import Stages from "./pages/stages";
+import SelectStages from "./pages/select-stages-for-members";
 
 const NotFounded = () => <div>404</div>;
 
@@ -39,10 +41,12 @@ export const routes = (
       <Route path="/project-owner" component={ProjectOwner} />
       <Route path="/members-list" component={MembersList} />
       <Route path="/project-stages-list" component={ProjectStagesList} />
+      <Route path="/project-editable" component={ProjectEditable} />
       <Route path="/team" component={Team} />
       <Route path="/members-search" component={MembersSearch} />
       <Route path="/stages" component={Stages} />
-      <Route path="/stages-editor" component={StagesEditor} />
+      <Route path="/select-stages-for-members" component={SelectStages} />
+      <Route path="/stage" component={Stage} />
       <Route path="/" component={Profile} />
       <Route component={NotFounded} />
     </Switch>

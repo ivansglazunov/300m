@@ -13,7 +13,8 @@ import {
   ListItemText,
   ListItem,
   IconButton,
-  ExpansionPanelActions
+  ExpansionPanelActions,
+  Checkbox
 } from "@material-ui/core";
 
 import { ExpandMore, ExpandLess, Edit } from "@material-ui/icons";
@@ -33,8 +34,7 @@ export default ({
   address,
   name,
   durationFrom,
-  durationTo,
-  onEdit
+  durationTo
 }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -47,7 +47,6 @@ export default ({
     <>
       <ExpansionPanel expanded={open}>
         <ExpansionPanelSummary
-          // expandIcon={<ExpandMore />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
           className={classes.content}
@@ -57,6 +56,13 @@ export default ({
               disableGutters={true}
               style={{ paddingTop: 0, paddingBottom: 0 }}
             >
+              <Checkbox
+                checked={true}
+                value="checkedA"
+                inputProps={{
+                  "aria-label": "primary checkbox"
+                }}
+              />
               <ListItemText
                 primary={title}
                 secondary={
@@ -74,9 +80,6 @@ export default ({
             </ListItem>
           </List>
           <ExpansionPanelActions style={{ width: "100%", padding: 0 }}>
-            <IconButton aria-label="Edit" onClick={onEdit}>
-              <Edit />
-            </IconButton>
             <IconButton onClick={handleClick}>
               {open ? <ExpandLess /> : <ExpandMore />}
             </IconButton>

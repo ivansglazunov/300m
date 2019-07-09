@@ -5,6 +5,6 @@ import ProjectOwner from "../../components/project-owner";
 
 export default withTracker(() => {
   return {};
-})(({}) => {
-  return <ProjectOwner />;
+})(({ history }) => {
+  return <ProjectOwner onEdit={() => history.push("/project-editable")} />;
 });
