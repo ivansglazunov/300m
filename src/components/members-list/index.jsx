@@ -35,18 +35,6 @@ export default ({ members }) => {
       <Area
         content={
           <List>
-            {/* <OneItem
-              name="Papa Johns"
-              stages={[
-                { address: "Москва, Ветошный пер. 12", start: moment() },
-                {
-                  address: "",
-                  start: moment().add(2, "days")
-                }
-              ]}
-            />
-            <OneItem name="Cap Sanders" stages={[]} />
-            <OneItem name="Ronald MacDonald" /> */}
             {members.map(member => (
               <OneItem key={member._id} {...member} />
             ))}
