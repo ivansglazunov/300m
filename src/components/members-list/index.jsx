@@ -16,7 +16,6 @@ import { ChevronRight } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 import OneItem from "./item";
-import moment from "moment";
 
 import { Area } from "../slice-area/index";
 

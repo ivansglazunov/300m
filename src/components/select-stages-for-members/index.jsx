@@ -9,16 +9,18 @@ import {
   List,
   ListItemText,
   ListItem,
-  ListItemIcon,
   IconButton,
   ExpansionPanelActions,
   Checkbox,
-  Paper
+  Paper,
+  Tabs,
+  Tab
 } from "@material-ui/core";
 
 import { ExpandMore, ExpandLess, ChevronLeft } from "@material-ui/icons";
 
 import { Area } from "../slice-area";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -36,10 +38,12 @@ export default ({
   name,
   durationFrom,
   durationTo,
-  onTransitionToChoiseMembers
+  onTransitionToChoiseMembers,
+  onTransitionToTheProject
 }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   function handleClick() {
     setOpen(!open);
@@ -133,14 +137,26 @@ export default ({
               backgroundColor: "#3f51b5"
             }}
           >
-            <List style={{ color: "#fff" }}>
-              <ListItem button onClick={onTransitionToChoiseMembers}>
-                <ListItemIcon style={{ color: "#fff" }}>
-                  <ChevronLeft />
-                </ListItemIcon>
-                <ListItemText primary="add members to stages" />
-              </ListItem>
-            </List>
+            <Tabs selected={true} variant="fullWidth" centered>
+              <Tab
+                style={{
+                  color: "#fff",
+                  textTransform: "none",
+                  backgroundColor: "#3f51b5"
+                }}
+                onClick={onTransitionToChoiseMembers}
+                label={t("Add members to stages")}
+              />
+              <Tab
+                style={{
+                  color: "#fff",
+                  textTransform: "none",
+                  backgroundColor: "rgb(85, 99, 179)"
+                }}
+                onClick={onTransitionToTheProject}
+                label={t("Back to the project")}
+              />
+            </Tabs>
           </Paper>
         }
       />

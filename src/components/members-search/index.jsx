@@ -22,11 +22,12 @@ import { Search, ArrowRightAlt } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 import { Area } from "../slice-area/index";
+import { useTranslation } from "react-i18next";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
-    top: "50%",
-    right: -3,
+    top: "45%",
+    right: -10,
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === "light"
@@ -54,6 +55,7 @@ const useStyles = makeStyles(theme => ({
 export default ({}) => {
   const classes = useStyles();
   const [value, setValue] = useState("search");
+  const { t } = useTranslation();
 
   function handleChange(event, newValue) {
     setValue(newValue);
@@ -70,12 +72,12 @@ export default ({}) => {
             variant="fullWidth"
             onChange={handleChange}
           >
-            <Tab value="search" label="Search" />
+            <Tab value="search" label={t("Search")} />
             <Tab
               value="checked"
               label={
-                <StyledBadge>
-                  <span>Checked</span>
+                <StyledBadge badgeContent={1} color="primary">
+                  <span>{t("Checked")}</span>
                 </StyledBadge>
               }
             />
@@ -87,7 +89,7 @@ export default ({}) => {
               <div style={{ padding: "0 20px" }}>
                 <TextField
                   id="outlined-search"
-                  label="Search member"
+                  label={t("Search member")}
                   type="search"
                   className={classes.textField}
                   margin="dense"
@@ -112,7 +114,7 @@ export default ({}) => {
                     </ListItemAvatar>
                     <ListItemText
                       primary="Петров П.С."
-                      secondary="Short description of the worker"
+                      secondary={t("Short description of the worker")}
                     />
                     <ListItemSecondaryAction>
                       <Checkbox
@@ -140,7 +142,7 @@ export default ({}) => {
                     </ListItemAvatar>
                     <ListItemText
                       primary="Семенов Ф.А."
-                      secondary="Short description of the worker"
+                      secondary={t("Short description of the worker")}
                     />
                     <ListItemSecondaryAction>
                       <Checkbox
@@ -167,7 +169,7 @@ export default ({}) => {
           >
             <List style={{ color: "#fff" }}>
               <ListItem button component={Link} to="/select-stages-for-members">
-                <ListItemText primary="select stages for members" />
+                <ListItemText primary={t("select stages for members")} />
                 <ListItemSecondaryAction>
                   <ArrowRightAlt className={classes.extendedIcon} />
                 </ListItemSecondaryAction>

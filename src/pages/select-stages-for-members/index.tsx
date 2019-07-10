@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import withTracker from "../../simulate";
 
@@ -7,15 +8,18 @@ import SelectStages from "../../components/select-stages-for-members";
 export default withTracker(() => {
   return {};
 })(({ history }) => {
+  const { t } = useTranslation();
+
   return (
     <SelectStages
-      title="Stage title"
-      description="Short description"
+      title={t("Stage title")}
+      description={t("Short description")}
       address="Dandelion st. 21-12"
       name="Ronald MacDonald"
       durationFrom="21.06"
       durationTo="22.06"
       onTransitionToChoiseMembers={() => history.push("/members-list")}
+      onTransitionToTheProject={() => history.push("/project-owner")}
     />
   );
 });
