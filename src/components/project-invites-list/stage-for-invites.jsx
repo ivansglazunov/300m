@@ -17,9 +17,6 @@ import {
 import { ExpandMore, ExpandLess, Today, AccessTime } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1)
-  },
   content: {
     margin: 0
   },
@@ -30,6 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 export default ({ description, address, day, time }) => {
   const classes = useStyles();
+
   const [open, setOpen] = useState(false);
 
   function handleClick() {
@@ -42,7 +40,11 @@ export default ({ description, address, day, time }) => {
         <ExpansionPanelSummary
           aria-controls="panel1bh-content"
           id="panel1bh-header"
-          className={classes.content}
+          // так ты передаешь в качестве ExpansionPanelSummory класса класс описанный в classes.content
+          // а судя по https://material-ui.com/api/expansion-panel-summary/ ему можно передать стили для вложенных в него элементов
+          // и для этого нужно задать его в classes
+          // className={classes.content}
+          classes={{ content: classes.content }}
           style={{ margin: 0 }}
         >
           <List style={{ width: "100%", padding: 0 }}>

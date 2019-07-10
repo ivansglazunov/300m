@@ -26,7 +26,7 @@ import { Area } from "../slice-area/index";
 
 const useStyles = makeStyles(theme => ({}));
 
-export default ({ members, address }) => {
+export default ({ members }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -35,7 +35,7 @@ export default ({ members, address }) => {
       <Area
         content={
           <List>
-            <OneItem
+            {/* <OneItem
               name="Papa Johns"
               stages={[
                 { address: "Москва, Ветошный пер. 12", start: moment() },
@@ -46,7 +46,10 @@ export default ({ members, address }) => {
               ]}
             />
             <OneItem name="Cap Sanders" stages={[]} />
-            <OneItem name="Ronald MacDonald" />
+            <OneItem name="Ronald MacDonald" /> */}
+            {members.map(member => (
+              <OneItem key={member._id} {...member} />
+            ))}
           </List>
         }
         bottom={

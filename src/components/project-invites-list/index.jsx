@@ -36,6 +36,9 @@ const useStyles = makeStyles(theme => ({
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary
+  },
+  content: {
+    margin: 0
   }
 }));
 
@@ -144,6 +147,7 @@ export default ({
           onChange={handleChange("panel1")}
         >
           <ExpansionPanelSummary
+            classes={{ content: classes.content }}
             expandIcon={<ExpandMore />}
             aria-controls="panel1bh-content"
             id="panel1bh-header"
@@ -168,6 +172,7 @@ export default ({
           onChange={handleChange("panel2")}
         >
           <ExpansionPanelSummary
+            classes={{ content: classes.content }}
             expandIcon={<ExpandMore />}
             aria-controls="panel2bh-content"
             id="panel2bh-header"
