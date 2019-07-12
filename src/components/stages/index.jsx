@@ -5,7 +5,8 @@ import {
   ListItem,
   ListItemText,
   Paper,
-  ListItemIcon
+  ListItemIcon,
+  Container
 } from "@material-ui/core";
 
 import { Add } from "@material-ui/icons";
@@ -13,19 +14,13 @@ import { Add } from "@material-ui/icons";
 import StagesItem from "./stages-item";
 
 import { Area } from "../slice-area";
+import { useTranslation } from "react-i18next";
 
-export default ({
-  title = "Stage Title",
-  name = "Cap.Sanders",
-  address = "Dandelion st. 21-12",
-  durationFrom = "21.08",
-  durationTo = "23.08",
-  description = "short description of the stage",
-  onEdit
-}) => {
+export default ({ onEdit, onAddStage, stages }) => {
   const [edit, setEdit] = useState(false);
   const [create, setCreate] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   function handleClick() {
     setOpen(!open);
@@ -35,15 +30,11 @@ export default ({
     <>
       <Area
         content={
-          <StagesItem
-            title={title}
-            address={address}
-            durationFrom={durationFrom}
-            durationTo={durationTo}
-            name={name}
-            description={description}
-            onEdit={onEdit}
-          />
+          <Container>
+            {stages.map(stage => (
+              <StagesItem key={stage._id} stage={stage} onEdit={onEdit} />
+            ))}
+          </Container>
         }
         bottom={
           <Paper
@@ -54,11 +45,11 @@ export default ({
             }}
           >
             <List style={{ color: "#fff" }}>
-              <ListItem button onClick={onEdit}>
+              <ListItem button onClick={onAddStage}>
                 <ListItemIcon style={{ color: "#fff" }}>
                   <Add />
                 </ListItemIcon>
-                <ListItemText primary="add stage" />
+                <ListItemText primary={t("Add stage")} />
               </ListItem>
             </List>
           </Paper>

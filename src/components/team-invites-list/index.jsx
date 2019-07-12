@@ -1,41 +1,44 @@
-import React, { useState } from "react";
+import React from "react";
+
 import {
   makeStyles,
-  Paper,
   List,
   ListItem,
   ListItemText,
-  ListItemIcon
+  Paper,
+  ListItemIcon,
+  Container
 } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 
-import { useTranslation } from "react-i18next";
-
 import { Link } from "react-router-dom";
 
-import { Area } from "../slice-area/index";
-import StagesItem from "../stages/stages-item";
+import { Area } from "../slice-area";
+import OneItem from "./item";
+
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(theme => ({
-  direction: {
-    float: "right"
+  margin: {
+    margin: theme.spacing(1)
   }
 }));
 
-export default ({ stages, onEdit }) => {
-  const { t } = useTranslation();
+export default ({ onTeam, teams }) => {
   const classes = useStyles();
-  const [edit, setEdit] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
       <Area
         content={
-          <>
-            {stages.map(stage => (
-              <StagesItem key={stage._id} stage={stage} onEdit={onEdit} />
-            ))}
-          </>
+          <Container>
+            <List>
+              {teams.map(team => (
+                <OneItem key={team._id} {...team} onTeam={onTeam} />
+              ))}
+            </List>
+          </Container>
         }
         bottom={
           <Paper
@@ -46,7 +49,7 @@ export default ({ stages, onEdit }) => {
             }}
           >
             <List style={{ color: "#fff" }}>
-              <ListItem button component={Link} to={"/project-owner"}>
+              <ListItem button component={Link} to="/profile">
                 <ListItemIcon style={{ color: "#fff" }}>
                   <ChevronLeft />
                 </ListItemIcon>

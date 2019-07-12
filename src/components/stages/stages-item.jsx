@@ -25,12 +25,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default ({
-  title,
-  description,
-  address,
-  name,
-  durationFrom,
-  durationTo,
+  stage: { title, description, address, name, durationFrom, durationTo },
   onEdit
 }) => {
   const classes = useStyles();
@@ -44,7 +39,6 @@ export default ({
     <>
       <ExpansionPanel expanded={open}>
         <ExpansionPanelSummary
-          // expandIcon={<ExpandMore />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
           className={classes.content}

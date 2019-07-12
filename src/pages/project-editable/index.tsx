@@ -11,10 +11,11 @@ export default withTracker(() => {
 
   return (
     <ProjectEditable
-      onCancelButton={() => history.push("/project-owner")}
-      onSaveButton={() => history.push("/project-owner")}
+      onCancel={() => history.push("/project-owner")}
+      onSave={() => history.push("/project-owner")}
       title={t("Project title")}
       description="1234567"
+      saveContent={t("save")}
     />
   );
 });

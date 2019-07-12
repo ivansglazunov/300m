@@ -17,7 +17,7 @@ import {
   Badge,
   withStyles
 } from "@material-ui/core";
-import { Search, ArrowRightAlt } from "@material-ui/icons";
+import { Search, ChevronRight } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
@@ -27,7 +27,7 @@ import { useTranslation } from "react-i18next";
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
-    right: -10,
+    right: -11,
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === "light"
@@ -41,14 +41,6 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginRight: theme.spacing(1),
     marginTop: theme.spacing(2)
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1)
-  },
-  textAlign: {
-    position: "relative",
-    top: 2,
-    marginLeft: theme.spacing(1)
   }
 }));
 
@@ -171,7 +163,7 @@ export default ({}) => {
               <ListItem button component={Link} to="/select-stages-for-members">
                 <ListItemText primary={t("select stages for members")} />
                 <ListItemSecondaryAction>
-                  <ArrowRightAlt className={classes.extendedIcon} />
+                  <ChevronRight />
                 </ListItemSecondaryAction>
               </ListItem>
             </List>

@@ -12,7 +12,7 @@ import {
   Paper,
   ListItemIcon
 } from "@material-ui/core";
-import { Star, Add, ChevronLeft } from "@material-ui/icons";
+import { ChevronLeft } from "@material-ui/icons";
 
 import { Area } from "../slice-area";
 

@@ -1,21 +1,22 @@
 import React from "react";
 
 import {
-  Typography,
-  Divider,
   makeStyles,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemText,
   ListItemSecondaryAction,
-  Paper
+  Paper,
+  Container
 } from "@material-ui/core";
-import { StarRate, Build, ArrowRightAlt } from "@material-ui/icons";
+import { ChevronRight } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
 import { Area } from "../slice-area";
+import OneItem from "./item";
+
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -23,45 +24,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({}) => {
+export default ({ onTeam, teams }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <>
       <Area
         content={
-          <>
-            <Typography gutterBottom component="h1" variant="h5" align="center">
-              Teams List
-            </Typography>
+          <Container>
             <List>
-              <ListItem
-                alignItems="flex-start"
-                button
-                component={Link}
-                to="/team"
-              >
-                <ListItemText primary="Team short description" />
-                <ListItemAvatar>
-                  <StarRate />
-                </ListItemAvatar>
-              </ListItem>
+              {teams.map(team => (
+                <OneItem key={team._id} {...team} onTeam={onTeam} />
+              ))}
             </List>
-            <Divider />
-            <List>
-              <ListItem
-                alignItems="flex-start"
-                button
-                component={Link}
-                to="/team"
-              >
-                <ListItemText primary="Team short description" />
-                <ListItemAvatar>
-                  <Build />
-                </ListItemAvatar>
-              </ListItem>
-            </List>
-          </>
+          </Container>
         }
         bottom={
           <Paper
@@ -72,10 +49,10 @@ export default ({}) => {
             }}
           >
             <List style={{ color: "#fff" }}>
-              <ListItem button component={Link} to="/project-owner">
-                <ListItemText primary="project add" />
+              <ListItem button component={Link} to="/team">
+                <ListItemText primary={t("Team add")} />
                 <ListItemSecondaryAction>
-                  <ArrowRightAlt className={classes.extendedIcon} />
+                  <ChevronRight />
                 </ListItemSecondaryAction>
               </ListItem>
             </List>

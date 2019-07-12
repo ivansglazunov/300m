@@ -137,24 +137,26 @@ export default ({
               backgroundColor: "#3f51b5"
             }}
           >
-            <Tabs selected={true} variant="fullWidth" centered>
+            <Tabs variant="fullWidth" centered>
               <Tab
                 style={{
                   color: "#fff",
                   textTransform: "none",
-                  backgroundColor: "#3f51b5"
+                  backgroundColor: "rgb(85, 99, 179)",
+                  opacity: 1
                 }}
-                onClick={onTransitionToChoiseMembers}
-                label={t("Add members to stages")}
+                onClick={onTransitionToTheProject}
+                label={t("Back to the project")}
               />
               <Tab
                 style={{
                   color: "#fff",
                   textTransform: "none",
-                  backgroundColor: "rgb(85, 99, 179)"
+                  backgroundColor: "#3f51b5",
+                  opacity: 1
                 }}
-                onClick={onTransitionToTheProject}
-                label={t("Back to the project")}
+                onClick={onTransitionToChoiseMembers}
+                label={t("Add members to stages")}
               />
             </Tabs>
           </Paper>

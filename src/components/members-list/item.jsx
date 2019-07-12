@@ -15,13 +15,12 @@ import {
 } from "@material-ui/core";
 import { StarRate, ExpandMore, ExpandLess } from "@material-ui/icons";
 
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
-    right: -10,
+    right: -11,
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === "light"

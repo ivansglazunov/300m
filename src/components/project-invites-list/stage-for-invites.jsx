@@ -9,7 +9,6 @@ import {
   List,
   ListItemText,
   ListItem,
-  ListItemIcon,
   IconButton,
   ExpansionPanelActions
 } from "@material-ui/core";

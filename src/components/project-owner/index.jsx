@@ -36,8 +36,6 @@ export default ({
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [valueTit, setValueTitle] = useState(title);
-  const [valueDesc, setValueDesc] = useState(description);
 
   return (
     <Area

@@ -1,9 +1,27 @@
 import React from "react";
 
-import { List, ListItem, Badge, makeStyles } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  Badge,
+  makeStyles,
+  withStyles
+} from "@material-ui/core";
 
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
+const StyledBadge = withStyles(theme => ({
+  badge: {
+    top: "45%",
+    right: 5,
+    border: `2px solid ${
+      theme.palette.type === "light"
+        ? theme.palette.grey[200]
+        : theme.palette.grey[900]
+    }`
+  }
+}))(Badge);
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -37,9 +55,9 @@ export default ({}) => {
         </ListItem>
         <ListItem button>{t("Profile Notifications")}</ListItem>
         <List>
-          <Badge className={classes.margin} badgeContent={2} color="primary">
+          <StyledBadge badgeContent={2} color="primary">
             <ListItem button>{t("Profile Notification")}</ListItem>
-          </Badge>
+          </StyledBadge>
         </List>
       </List>
     </>

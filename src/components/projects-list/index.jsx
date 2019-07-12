@@ -4,19 +4,20 @@ import { Link } from "react-router-dom";
 
 import {
   List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
   makeStyles,
-  Paper
+  Paper,
+  Tabs,
+  Tab,
+  Container
 } from "@material-ui/core";
-import { Star, Build, ChevronRight } from "@material-ui/icons";
+import { ChevronRight } from "@material-ui/icons";
 
 import { Area } from "../slice-area/index";
+import OneItem from "./item";
 
 const useStyles = makeStyles(theme => ({}));
 
-export default ({ title, description }) => {
+export default ({ projects, onProjectClick, onAddProject, onToProfile }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -24,20 +25,22 @@ export default ({ title, description }) => {
     <>
       <Area
         content={
-          <List>
-            <ListItem button divider component={Link} to="/project-owner">
-              <ListItemText primary={title} secondary={description} />
-              <ListItemSecondaryAction>
-                <Star />
-              </ListItemSecondaryAction>
-            </ListItem>
-            <ListItem button divider component={Link} to="/project-member">
-              <ListItemText primary={title} secondary={description} />
-              <ListItemSecondaryAction>
-                <Build />
-              </ListItemSecondaryAction>
-            </ListItem>
-          </List>
+          <Container>
+            <List>
+              {projects.map(project => (
+                <OneItem
+                  key={project._id}
+                  project={project}
+                  // стоит передавать предмет целиком
+                  // что бы была возможность рядом с ним передать что-то отдельное
+                  // не являющееся частью предмета
+                  // обычно это называют атомарностью данных
+                  // то что они не смешиваются с чем-то
+                  onClick={onProjectClick}
+                />
+              ))}
+            </List>
+          </Container>
         }
         bottom={
           <Paper
@@ -47,14 +50,28 @@ export default ({ title, description }) => {
               backgroundColor: "#3f51b5"
             }}
           >
-            <List style={{ color: "#fff" }}>
-              <ListItem button component={Link} to="/project-owner">
-                <ListItemText primary={t("project add")} />
-                <ListItemSecondaryAction>
-                  <ChevronRight />
-                </ListItemSecondaryAction>
-              </ListItem>
-            </List>
+            <Tabs variant="fullWidth" centered>
+              <Tab
+                style={{
+                  color: "#fff",
+                  textTransform: "none",
+                  backgroundColor: "#3f51b5",
+                  opacity: 1
+                }}
+                onClick={onToProfile}
+                label={t("Back to profile")}
+              />
+              <Tab
+                style={{
+                  color: "#fff",
+                  textTransform: "none",
+                  backgroundColor: "rgb(85, 99, 179)",
+                  opacity: 1
+                }}
+                onClick={onAddProject}
+                label={t("Project add")}
+              />
+            </Tabs>
           </Paper>
         }
       />

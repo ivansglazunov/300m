@@ -66,50 +66,8 @@ export default ({
       <Card>
         <List>
           <ListItem>
-            <Grid
-              container
-              direction="row"
-              justify="space-between"
-              alignItems="center"
-            >
-              <Grid item xs={8}>
-                <ListItemText
-                  primary={
-                    <Button
-                      onClick={onUser}
-                      style={{ textDecoration: "underline" }}
-                    >
-                      {name}
-                    </Button>
-                  }
-                  secondary={description}
-                />
-              </Grid>
-              <Grid item={4}>
-                <ListItemSecondaryAction>
-                  <ButtonBase onClick={onAccept}>
-                    <Button color="primary" edge="add" aria-label="add">
-                      <Add />
-                    </Button>
-                  </ButtonBase>
-                  <ButtonBase onClick={onRefuse}>
-                    <Button color="secondary" edge="clear" aria-label="clear">
-                      <Clear />
-                    </Button>
-                  </ButtonBase>
-                </ListItemSecondaryAction>
-              </Grid>
-            </Grid>
-          </ListItem>
-          <StageForInvites
-            address={address}
-            description={description}
-            day={day}
-            time={time}
-          />
-          <ListItem>
             <ListItemText
-              style={{ textAlign: "center", paddingRight: 100 }}
+              style={{ textAlign: "left", paddingRight: 100 }}
               primary={
                 <Button
                   onClick={onUser}
@@ -121,22 +79,28 @@ export default ({
               secondary={description}
             />
             <ListItemSecondaryAction>
-              <ButtonBase>
-                <IconButton color="primary" edge="add" aria-label="add">
+              <ButtonBase onClick={onAccept}>
+                <Button color="primary" edge="add" aria-label="add">
                   <Add />
-                </IconButton>
+                </Button>
               </ButtonBase>
-              <ButtonBase>
-                <IconButton color="secondary" edge="clear" aria-label="clear">
+              <ButtonBase onClick={onRefuse}>
+                <Button color="secondary" edge="clear" aria-label="clear">
                   <Clear />
-                </IconButton>
+                </Button>
               </ButtonBase>
             </ListItemSecondaryAction>
           </ListItem>
         </List>
+        <StageForInvites
+          address={address}
+          description={description}
+          day={day}
+          time={time}
+        />
       </Card>
 
-      <Grid
+      {/* <Grid
         container
         direction="column"
         justify="flex-start"
@@ -192,7 +156,7 @@ export default ({
             <Typography></Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
-      </Grid>
+      </Grid> */}
     </>
   );
 };

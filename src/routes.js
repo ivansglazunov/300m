@@ -26,6 +26,8 @@ import MembersSearch from "./pages/members-search";
 import Stage from "./pages/stage";
 import Stages from "./pages/stages";
 import SelectStages from "./pages/select-stages-for-members";
+import CreateProject from "./pages/stepper";
+import CreateProjectStage from "./pages/create-project-stage";
 
 const NotFounded = () => <div>404</div>;
 
@@ -47,6 +49,8 @@ export const routes = (
       <Route path="/stages" component={Stages} />
       <Route path="/select-stages-for-members" component={SelectStages} />
       <Route path="/stage" component={Stage} />
+      <Route path="/create-project/:step" component={CreateProject} />
+      <Route path="/create-project-stage" component={CreateProjectStage} />
       <Route path="/" component={Profile} />
       <Route component={NotFounded} />
     </Switch>
