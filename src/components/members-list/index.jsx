@@ -8,7 +8,8 @@ import {
   Paper,
   ListItem,
   ListItemText,
-  ListItemSecondaryAction
+  ListItemSecondaryAction,
+  Container
 } from "@material-ui/core";
 import { ChevronRight } from "@material-ui/icons";
 
@@ -32,11 +33,13 @@ export default ({ members }) => {
     <>
       <Area
         content={
-          <List>
-            {members.map(member => (
-              <OneItem key={member._id} {...member} />
-            ))}
-          </List>
+          <Container>
+            <List>
+              {members.map(member => (
+                <OneItem key={member._id} {...member} />
+              ))}
+            </List>
+          </Container>
         }
         bottom={
           <Paper

@@ -1,23 +1,17 @@
 import React from "react";
 
 import {
-  Grid,
-  Typography,
-  Fab,
   makeStyles,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
   ListItemText,
   Button,
   List,
   Card,
   ListItem,
   ListItemSecondaryAction,
-  IconButton,
-  ButtonBase
+  ButtonBase,
+  Container
 } from "@material-ui/core";
-import { Add, Clear, ExpandMore } from "@material-ui/icons";
+import { Add, Clear } from "@material-ui/icons";
 
 import StageForInvites from "./stage-for-invites";
 
@@ -63,7 +57,7 @@ export default ({
 
   return (
     <>
-      <Card>
+      <Container>
         <List>
           <ListItem>
             <ListItemText
@@ -98,65 +92,7 @@ export default ({
           day={day}
           time={time}
         />
-      </Card>
-
-      {/* <Grid
-        container
-        direction="column"
-        justify="flex-start"
-        alignItems="flex-start"
-      >
-        <ExpansionPanel
-          expanded={expanded === "panel1"}
-          onChange={handleChange("panel1")}
-        >
-          <ExpansionPanelSummary
-            classes={{ content: classes.content }}
-            expandIcon={<ExpandMore />}
-            aria-controls="panel1bh-content"
-            id="panel1bh-header"
-          >
-            <Grid item xs={8}>
-              <Typography className={classes.heading}>{address}</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography align="center" className={classes.secondaryHeading}>
-                24 июля
-                <br />
-                10:30
-              </Typography>
-            </Grid>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography></Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel
-          expanded={expanded === "panel2"}
-          onChange={handleChange("panel2")}
-        >
-          <ExpansionPanelSummary
-            classes={{ content: classes.content }}
-            expandIcon={<ExpandMore />}
-            aria-controls="panel2bh-content"
-            id="panel2bh-header"
-          >
-            <Grid item xs={8}>
-              <Typography className={classes.heading}>{address}</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography align="center" className={classes.secondaryHeading}>
-                24 июля
-                <br />
-                10:30
-              </Typography>
-            </Grid>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography></Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-      </Grid> */}
+      </Container>
     </>
   );
 };

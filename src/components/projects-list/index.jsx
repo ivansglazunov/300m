@@ -1,16 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
-import {
-  List,
-  makeStyles,
-  Paper,
-  Tabs,
-  Tab,
-  Container
-} from "@material-ui/core";
-import { ChevronRight } from "@material-ui/icons";
+import { List, makeStyles, Container, Fab } from "@material-ui/core";
+import { Add } from "@material-ui/icons";
 
 import { Area } from "../slice-area/index";
 import OneItem from "./item";
@@ -40,40 +32,43 @@ export default ({ projects, onProjectClick, onAddProject, onToProfile }) => {
                 />
               ))}
             </List>
+            <Fab onClick={onAddProject} color="primary" aria-label="Add">
+              <Add />
+            </Fab>
           </Container>
         }
-        bottom={
-          <Paper
-            square="false"
-            elevation="2"
-            style={{
-              backgroundColor: "#3f51b5"
-            }}
-          >
-            <Tabs variant="fullWidth" centered>
-              <Tab
-                style={{
-                  color: "#fff",
-                  textTransform: "none",
-                  backgroundColor: "#3f51b5",
-                  opacity: 1
-                }}
-                onClick={onToProfile}
-                label={t("Back to profile")}
-              />
-              <Tab
-                style={{
-                  color: "#fff",
-                  textTransform: "none",
-                  backgroundColor: "rgb(85, 99, 179)",
-                  opacity: 1
-                }}
-                onClick={onAddProject}
-                label={t("Project add")}
-              />
-            </Tabs>
-          </Paper>
-        }
+        // bottom={
+        //   <Paper
+        //     square="false"
+        //     elevation="2"
+        //     style={{
+        //       backgroundColor: "#3f51b5"
+        //     }}
+        //   >
+        //     <Tabs variant="fullWidth" centered>
+        //       <Tab
+        //         style={{
+        //           color: "#fff",
+        //           textTransform: "none",
+        //           backgroundColor: "#3f51b5",
+        //           opacity: 1
+        //         }}
+        //         onClick={onToProfile}
+        //         label={t("Back to profile")}
+        //       />
+        //       <Tab
+        //         style={{
+        //           color: "#fff",
+        //           textTransform: "none",
+        //           backgroundColor: "rgb(85, 99, 179)",
+        //           opacity: 1
+        //         }}
+        //         onClick={onAddProject}
+        //         label={t("Project add")}
+        //       />
+        //     </Tabs>
+        //   </Paper>
+        // }
       />
     </>
   );

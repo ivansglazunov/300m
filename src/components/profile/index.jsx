@@ -3,10 +3,22 @@ import React from "react";
 import {
   List,
   ListItem,
+  ListItemText,
+  ListItemIcon,
   Badge,
   makeStyles,
   withStyles
 } from "@material-ui/core";
+
+import {
+  Person,
+  People,
+  GroupAdd,
+  Notifications,
+  Settings,
+  Business,
+  ListAlt
+} from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -38,25 +50,52 @@ export default ({}) => {
     <>
       <List>
         <ListItem button component={Link} to="/user">
-          {t("user")}
+          <ListItemIcon>
+            <Person />
+          </ListItemIcon>
+          <ListItemText primary={t("user")} />
         </ListItem>
-        <ListItem button>{t("settings")}</ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <Settings />
+          </ListItemIcon>
+          <ListItemText primary={t("settings")} />
+        </ListItem>
         <ListItem button component={Link} to="/projects-list">
-          {t("Project List")}
+          <ListItemIcon>
+            <Business />
+          </ListItemIcon>
+          <ListItemText primary={t("Project List")} />
         </ListItem>
         <ListItem button component={Link} to="/project-invites-list">
-          {t("Project Invites List")}
+          <ListItemIcon>
+            <ListAlt />
+          </ListItemIcon>
+          <ListItemText primary={t("Project Invites List")} />
         </ListItem>
         <ListItem button component={Link} to="/teams-list">
-          {t("Teams List")}
+          <ListItemIcon>
+            <People />
+          </ListItemIcon>
+          <ListItemText primary={t("Teams List")} />
         </ListItem>
         <ListItem button component={Link} to="/team-invites-list">
-          {t("Team Invites List")}
+          <ListItemIcon>
+            <GroupAdd />
+          </ListItemIcon>
+          <ListItemText primary={t("Team Invites List")} />
         </ListItem>
-        <ListItem button>{t("Profile Notifications")}</ListItem>
+        <ListItem button disabled>
+          <ListItemIcon>
+            <Notifications />
+          </ListItemIcon>
+          <ListItemText primary={t("Profile Notifications")} />
+        </ListItem>
         <List>
           <StyledBadge badgeContent={2} color="primary">
-            <ListItem button>{t("Profile Notification")}</ListItem>
+            <ListItem disabled button>
+              {t("Profile Notification")}
+            </ListItem>
           </StyledBadge>
         </List>
       </List>

@@ -39,21 +39,12 @@ export default ({ description, address, day, time }) => {
         <ExpansionPanelSummary
           aria-controls="panel1bh-content"
           id="panel1bh-header"
-          // так ты передаешь в качестве ExpansionPanelSummory класса класс описанный в classes.content
-          // а судя по https://material-ui.com/api/expansion-panel-summary/ ему можно передать стили для вложенных в него элементов
-          // и для этого нужно задать его в classes
-          // className={classes.content}
           classes={{ content: classes.content }}
           style={{ margin: 0 }}
         >
           <List style={{ width: "100%", padding: 0 }}>
-            {/* <ListItem
-              disableGutters={true}
-              style={{ paddingTop: 0, paddingBottom: 0 }}
-            > */}
             {!open ? (
               <ListItem
-                fullWidth
                 disableGutters={true}
                 style={{ paddingTop: 0, paddingBottom: 0 }}
               >

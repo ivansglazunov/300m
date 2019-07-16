@@ -29,6 +29,10 @@ const resources = {
       delete: "Удалить",
       From: "С",
       To: "До",
+      Profile: "Профиль",
+      Teams: "Команды",
+      Projects: "Проекты",
+      Notification: "Уведомления",
       "Project List": "Список проектов",
       "Stages List": "Список этапов",
       "Members List": "Список участников",
@@ -58,7 +62,9 @@ const resources = {
       "Back to profile": "Вернуться в профиль",
       "Short description of the stage": "Короткое описание этапа",
       "Add stage": "Добавить этапы",
-      "Team short description": "Краткое описание команды"
+      "Team short description": "Краткое описание команды",
+      "Project chef": "Проект шефа",
+      "Back to project list": "Вернуться в список проектов"
     }
   }
 };
