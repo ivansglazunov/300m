@@ -10,6 +10,7 @@ import {
   ListItemText,
   ListItem
 } from "@material-ui/core";
+import { blue } from "@material-ui/core/colors";
 import { GroupAdd, ListAlt, Timeline, BrokenImage } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
@@ -18,8 +19,11 @@ const useStyles = makeStyles(theme => ({
   },
   bigAvatar: {
     margin: 10,
-    width: 60,
-    height: 60
+    width: 50,
+    height: 45
+  },
+  primary: {
+    fontWeight: 800
   }
 }));
 
@@ -40,17 +44,19 @@ export default ({
       <List disablePadding={true}>
         <ListItem dense>
           <ListItemAvatar>
-            <Avatar>
-              {typeOfActivity === "invitToTeam" ? (
-                <GroupAdd />
-              ) : typeOfActivity === "inviteToProject" ? (
-                <ListAlt />
-              ) : typeOfActivity === "privateMassage" ? (
+            <Avatar
+              style={{ color: "#fff", backgroundColor: blue[500], margin: 10 }}
+            >
+              {srcAvatar ? (
                 <img
                   alt={altAvatar}
                   src={srcAvatar}
                   className={classes.bigAvatar}
                 />
+              ) : typeOfActivity === "invitToTeam" ? (
+                <GroupAdd />
+              ) : typeOfActivity === "inviteToProject" ? (
+                <ListAlt />
               ) : typeOfActivity === "stageMessage" ? (
                 <Timeline />
               ) : (
@@ -59,6 +65,8 @@ export default ({
             </Avatar>
           </ListItemAvatar>
           <ListItemText
+            classes={{ primary: classes.primary }}
+            primaryTypographyProps={{ variant: "h6" }}
             primary={title}
             secondary={
               typeOfActivity === "privateMessage" ? (
