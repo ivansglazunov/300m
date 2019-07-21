@@ -9,7 +9,8 @@ import {
   Typography,
   Card,
   CardContent,
-  IconButton
+  IconButton,
+  Container
 } from "@material-ui/core";
 import { Edit } from "@material-ui/icons";
 
@@ -26,33 +27,35 @@ export default ({ title, description, onEdit, membersList, stages }) => {
   const { t } = useTranslation();
 
   return (
-    <Card>
-      <CardContent>
-        <IconButton
-          style={{ float: "right", padding: 0 }}
-          aria-label="Edit"
-          onClick={onEdit}
-        >
-          <Edit />
-        </IconButton>
-        <Typography variant="h5" component="h1" gutterBottom align="center">
-          {title}
-        </Typography>
-        <Typography variant="body1" component="div">
-          {description}
-        </Typography>
-      </CardContent>
-      <List>
-        <ListItem component={Link} button to="/members-list">
-          {membersList}
-        </ListItem>
-        <ListItem component={Link} button to="/project-stages-list">
-          {stages}
-        </ListItem>
-        <Badge className={classes.margin} badgeContent={2} color="primary">
-          <ListItem button>{t("Profile Notification")}</ListItem>
-        </Badge>
-      </List>
-    </Card>
+    <Container>
+      <Card>
+        <CardContent>
+          <IconButton
+            style={{ float: "right", padding: 0 }}
+            aria-label="Edit"
+            onClick={onEdit}
+          >
+            <Edit />
+          </IconButton>
+          <Typography variant="h5" component="h1" gutterBottom align="center">
+            {title}
+          </Typography>
+          <Typography variant="body1" component="div">
+            {description}
+          </Typography>
+        </CardContent>
+        <List>
+          <ListItem component={Link} button to="/members-list">
+            {membersList}
+          </ListItem>
+          <ListItem component={Link} button to="/project-stages">
+            {stages}
+          </ListItem>
+          <Badge className={classes.margin} badgeContent={2} color="primary">
+            <ListItem button>{t("Profile Notification")}</ListItem>
+          </Badge>
+        </List>
+      </Card>
+    </Container>
   );
 };

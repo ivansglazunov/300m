@@ -16,9 +16,9 @@ export default withTracker(() => {
         address: "",
         name: ""
       }}
-      onCancel={() => history.push("/stages")}
-      onSave={() => history.push("/stages")}
-      onDelete={() => history.push("/stages")}
+      onCancel={() => history.push("/project-stages")}
+      onSave={() => history.push("/project-stages")}
+      onDelete={() => history.push("/project-stages")}
     />
   );
 });

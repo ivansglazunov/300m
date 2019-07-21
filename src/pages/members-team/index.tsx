@@ -19,9 +19,9 @@ export default withTracker(() => {
     <Area
       top={
         <BackButton
-          labelBack={t("Back to projects")}
+          labelBack={t("Back to teams")}
           labelNow={t("Members List")}
-          onBack={() => history.push("/project-owner")}
+          onBack={() => history.push("/team")}
         />
       }
       content={
@@ -50,7 +50,7 @@ export default withTracker(() => {
           onToTeams={() => history.push("/teams-list")}
           onToProjects={() => history.push("/projects-list")}
           onToNotification={() => history.push("/")}
-          selectedTab="project"
+          selectedTab="team"
         />
       }
     />

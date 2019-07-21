@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import {
-  makeStyles,
+  Card,
   CardContent,
   TextField,
+  Container,
   Button,
-  Card,
-  Container
+  makeStyles
 } from "@material-ui/core";
-
-import { Area } from "../slice-area/index";
+import { Area } from "../slice-area";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -18,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ title, description, onCancel, onSave, saveContent }) => {
+export default ({ description, title, onCancel, onSave, saveContent }) => {
   const classes = useStyles();
   const [valueTit, setValueTitle] = useState(title);
   const [valueDesc, setValueDesc] = useState(description);
@@ -32,20 +31,20 @@ export default ({ title, description, onCancel, onSave, saveContent }) => {
             <CardContent>
               <TextField
                 fullWidth
-                value={valueTit}
                 margin="dense"
-                label={t("title")}
+                label="Title"
                 variant="outlined"
+                value={valueTit}
                 placeholder={title}
                 onChange={event => setValueTitle(event.target.value)}
               />
               <TextField
                 fullWidth
-                value={valueDesc}
                 margin="dense"
-                label={t("description")}
+                label="Description"
                 variant="outlined"
                 multiline
+                value={valueDesc}
                 placeholder={description}
                 onChange={event => setValueDesc(event.target.value)}
               />

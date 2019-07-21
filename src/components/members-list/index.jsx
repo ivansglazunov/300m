@@ -1,23 +1,9 @@
 import React from "react";
 
-import { useTranslation } from "react-i18next";
-
-import {
-  makeStyles,
-  List,
-  Paper,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  Container
-} from "@material-ui/core";
-import { ChevronRight } from "@material-ui/icons";
-
-import { Link } from "react-router-dom";
+import { makeStyles, List, Container, Fab } from "@material-ui/core";
+import { Add } from "@material-ui/icons";
 
 import OneItem from "./item";
-
-import { Area } from "../slice-area/index";
 
 // TODO юзеры должно быть элементом списка, иначе этого появляется куча дублирующих логик отрисовки одного и того-же по разному
 // я бы проверил можно ли ListItem размещать без List ИЛИ можно ли размещать в List ExapansionPanel, это бы многое упростило и позволило бы их чередовать
@@ -25,41 +11,26 @@ import { Area } from "../slice-area/index";
 
 const useStyles = makeStyles(theme => ({}));
 
-export default ({ members }) => {
+export default ({ members, onAddMembers }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
 
   return (
     <>
-      <Area
-        content={
-          <Container>
-            <List>
-              {members.map(member => (
-                <OneItem key={member._id} {...member} />
-              ))}
-            </List>
-          </Container>
-        }
-        bottom={
-          <Paper
-            square="false"
-            elevation="2"
-            style={{
-              backgroundColor: "#3f51b5"
-            }}
-          >
-            <List style={{ color: "#fff" }}>
-              <ListItem button component={Link} to="/members-search">
-                <ListItemText primary={t("member add")} />
-                <ListItemSecondaryAction>
-                  <ChevronRight />
-                </ListItemSecondaryAction>
-              </ListItem>
-            </List>
-          </Paper>
-        }
-      />
+      <Container>
+        <List>
+          {members.map(member => (
+            <OneItem key={member._id} {...member} />
+          ))}
+        </List>
+        <Fab
+          onClick={onAddMembers}
+          color="primary"
+          aria-label="Add"
+          style={{ position: "absolute", right: 16, bottom: 16 }}
+        >
+          <Add />
+        </Fab>
+      </Container>
     </>
   );
 };

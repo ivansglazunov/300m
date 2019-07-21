@@ -22,7 +22,7 @@ const resources = {
       Description: "Описание",
       Next: "Далее",
       "member add": "Добавить участника",
-      "select stages for members": "Выбрать этапы для участников",
+      "Select stages for members": "Выбрать этапы для участников",
       "Add members to stages": "Добавить участников в этапы",
       cancel: "Отменить",
       save: "Сохранить",
@@ -31,6 +31,7 @@ const resources = {
       To: "До",
       Profile: "Профиль",
       Teams: "Команды",
+      Team: "Команда",
       Projects: "Проекты",
       Notification: "Уведомления",
       "Project List": "Список проектов",
@@ -58,13 +59,21 @@ const resources = {
       Finish: "Закончить",
       "Search member": "Поиск участников",
       "Short description of the worker": "Короткое описание работника",
-      "Back to the project": "Вернуться в проект",
+      "Back to project": "Вернуться в проект",
       "Back to profile": "Вернуться в профиль",
       "Short description of the stage": "Короткое описание этапа",
       "Add stage": "Добавить этапы",
       "Team short description": "Краткое описание команды",
       "Project chef": "Проект шефа",
-      "Back to project list": "Вернуться в список проектов"
+      "Back to projects": "Вернуться в проекты",
+      "Project stages": "Этапы проекта",
+      "Project member": "Проект участника",
+      "Members search": "Поиск участников",
+      "Back to select members": "Вернуться к выбору участников",
+      "Invitations to projects": "Приглашения в проекты",
+      "Invitations to teams": "Приглашения в команды",
+      "Team edit": "Редактирование команды",
+      "Back to teams": "Вернуться в команды"
     }
   }
 };

@@ -12,12 +12,11 @@ import {
   IconButton,
   ExpansionPanelActions,
   Checkbox,
-  Paper,
-  Tabs,
-  Tab
+  Container,
+  Button
 } from "@material-ui/core";
 
-import { ExpandMore, ExpandLess, ChevronLeft } from "@material-ui/icons";
+import { ExpandMore, ExpandLess } from "@material-ui/icons";
 
 import { Area } from "../slice-area";
 import { useTranslation } from "react-i18next";
@@ -38,8 +37,9 @@ export default ({
   name,
   durationFrom,
   durationTo,
-  onTransitionToChoiseMembers,
-  onTransitionToTheProject
+  onBackToSelectMemebers,
+  onCancel,
+  onAddMembersToStages
 }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -50,9 +50,9 @@ export default ({
   }
 
   return (
-    <>
-      <Area
-        content={
+    <Area
+      content={
+        <Container>
           <ExpansionPanel expanded={open}>
             <ExpansionPanelSummary
               aria-controls="panel1bh-content"
@@ -128,40 +128,21 @@ export default ({
               </List>
             </ExpansionPanelDetails>
           </ExpansionPanel>
-        }
-        bottom={
-          <Paper
-            square="false"
-            elevation="2"
-            style={{
-              backgroundColor: "#3f51b5"
-            }}
-          >
-            <Tabs variant="fullWidth" centered>
-              <Tab
-                style={{
-                  color: "#fff",
-                  textTransform: "none",
-                  backgroundColor: "rgb(85, 99, 179)",
-                  opacity: 1
-                }}
-                onClick={onTransitionToTheProject}
-                label={t("Back to the project")}
-              />
-              <Tab
-                style={{
-                  color: "#fff",
-                  textTransform: "none",
-                  backgroundColor: "#3f51b5",
-                  opacity: 1
-                }}
-                onClick={onTransitionToChoiseMembers}
-                label={t("Add members to stages")}
-              />
-            </Tabs>
-          </Paper>
-        }
-      />
-    </>
+        </Container>
+      }
+      bottom={
+        <>
+          <Button color="primary" onClick={onCancel}>
+            {t("cancel")}
+          </Button>
+          <Button onClick={onBackToSelectMemebers}>
+            {t("Back to select members")}
+          </Button>
+          <Button color="secondary" onClick={onAddMembersToStages}>
+            {t("Add members to stages")}
+          </Button>
+        </>
+      }
+    />
   );
 };

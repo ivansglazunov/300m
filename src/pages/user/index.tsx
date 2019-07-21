@@ -35,6 +35,7 @@ export default withTracker(() => {
           onToTeams={() => history.push("/teams-list")}
           onToProjects={() => history.push("/projects-list")}
           onToNotification={() => history.push("/")}
+          selectedTab="profile"
         />
       }
     />

@@ -18,8 +18,9 @@ export default withTracker(() => {
       name="Ronald MacDonald"
       durationFrom="21.06"
       durationTo="22.06"
-      onTransitionToChoiseMembers={() => history.push("/members-list")}
-      onTransitionToTheProject={() => history.push("/project-owner")}
+      onCancel={() => history.push("/members-list")}
+      onBackToSelectMemebers={() => history.push("/members-search")}
+      onAddMembersToStages={() => history.push("/members-list")}
     />
   );
 });

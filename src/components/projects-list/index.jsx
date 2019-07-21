@@ -1,21 +1,68 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { List, makeStyles, Container, Fab } from "@material-ui/core";
+import {
+  List,
+  makeStyles,
+  Container,
+  Fab,
+  Tabs,
+  Tab,
+  Badge,
+  withStyles
+} from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 
 import { Area } from "../slice-area/index";
 import OneItem from "./item";
 
+const StyledBadge = withStyles(theme => ({
+  badge: {
+    top: "45%",
+    right: -11,
+    // The border color match the background color.
+    border: `2px solid ${
+      theme.palette.type === "light"
+        ? theme.palette.grey[200]
+        : theme.palette.grey[900]
+    }`
+  }
+}))(Badge);
+
 const useStyles = makeStyles(theme => ({}));
 
-export default ({ projects, onProjectClick, onAddProject, onToProfile }) => {
+export default ({
+  projects,
+  onProjectClick,
+  onAddProject,
+  onProjects,
+  onInvitations
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   return (
     <>
       <Area
+        top={
+          <Tabs
+            value="projects"
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+          >
+            <Tab value="projects" label={t("Projects")} onClick={onProjects} />
+            <Tab
+              value="invitations"
+              onClick={onInvitations}
+              label={
+                <StyledBadge badgeContent={1} color="primary">
+                  <span>{t("Invitations to projects")}</span>
+                </StyledBadge>
+              }
+            />
+          </Tabs>
+        }
         content={
           <Container>
             <List>
@@ -23,52 +70,24 @@ export default ({ projects, onProjectClick, onAddProject, onToProfile }) => {
                 <OneItem
                   key={project._id}
                   project={project}
-                  // стоит передавать предмет целиком
-                  // что бы была возможность рядом с ним передать что-то отдельное
-                  // не являющееся частью предмета
-                  // обычно это называют атомарностью данных
-                  // то что они не смешиваются с чем-то
                   onClick={onProjectClick}
                 />
               ))}
             </List>
-            <Fab onClick={onAddProject} color="primary" aria-label="Add">
+            <Fab
+              onClick={onAddProject}
+              color="primary"
+              aria-label="Add"
+              style={{
+                position: "absolute",
+                right: 16,
+                bottom: 16
+              }}
+            >
               <Add />
             </Fab>
           </Container>
         }
-        // bottom={
-        //   <Paper
-        //     square="false"
-        //     elevation="2"
-        //     style={{
-        //       backgroundColor: "#3f51b5"
-        //     }}
-        //   >
-        //     <Tabs variant="fullWidth" centered>
-        //       <Tab
-        //         style={{
-        //           color: "#fff",
-        //           textTransform: "none",
-        //           backgroundColor: "#3f51b5",
-        //           opacity: 1
-        //         }}
-        //         onClick={onToProfile}
-        //         label={t("Back to profile")}
-        //       />
-        //       <Tab
-        //         style={{
-        //           color: "#fff",
-        //           textTransform: "none",
-        //           backgroundColor: "rgb(85, 99, 179)",
-        //           opacity: 1
-        //         }}
-        //         onClick={onAddProject}
-        //         label={t("Project add")}
-        //       />
-        //     </Tabs>
-        //   </Paper>
-        // }
       />
     </>
   );

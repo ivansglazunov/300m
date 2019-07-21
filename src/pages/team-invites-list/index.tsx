@@ -3,6 +3,8 @@ import withTracker from "../../simulate";
 
 import TeamInvitesList from "../../components/team-invites-list";
 import { useTranslation } from "react-i18next";
+import { Area } from "../../components/slice-area";
+import Navigation from "../../components/navigation/down";
 
 export default withTracker(() => {
   return {};
@@ -10,25 +12,40 @@ export default withTracker(() => {
   const { t } = useTranslation();
 
   return (
-    <TeamInvitesList
-      onTeam={() => history.push("/team")}
-      teams={[
-        {
-          _id: "a",
-          name: "Сидоров В.В.",
-          description: t("Team short description")
-        },
-        {
-          _id: "b",
-          name: "Иванов А.А.",
-          description: t("Team short description")
-        },
-        {
-          _id: "c",
-          name: "Фокин В.Т.",
-          description: t("Team short description")
-        }
-      ]}
+    <Area
+      content={
+        <TeamInvitesList
+          onTeams={() => history.push("/teams-list")}
+          onInvitations={() => history.push("/team-invites-list")}
+          onTeam={() => history.push("/team")}
+          teams={[
+            {
+              _id: "a",
+              name: "Сидоров В.В.",
+              description: t("Team short description")
+            },
+            {
+              _id: "b",
+              name: "Иванов А.А.",
+              description: t("Team short description")
+            },
+            {
+              _id: "c",
+              name: "Фокин В.Т.",
+              description: t("Team short description")
+            }
+          ]}
+        />
+      }
+      bottom={
+        <Navigation
+          onToProfile={() => history.push("/profile")}
+          onToTeams={() => history.push("/teams-list")}
+          onToProjects={() => history.push("/projects-list")}
+          onToNotification={() => history.push("/")}
+          selectedTab="team"
+        />
+      }
     />
   );
 });

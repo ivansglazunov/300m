@@ -6,12 +6,14 @@ import { ChevronLeft } from "@material-ui/icons";
 const useStyles = makeStyles(theme => ({
   wrapper: {
     flexDirection: "row"
+  },
+  labelIcon: {
+    minHeight: "initial"
   }
 }));
 
 export default ({ onBack, labelBack, labelNow }) => {
   const classes = useStyles();
-  // const {classes} = useStyles(); было так, деструкция лишняя
 
   return (
     <Paper
@@ -29,7 +31,7 @@ export default ({ onBack, labelBack, labelNow }) => {
             backgroundColor: "#3f51b5",
             opacity: 1
           }}
-          classes={{ wrapper: classes.wrapper }}
+          classes={{ wrapper: classes.wrapper, labelIcon: classes.labelIcon }}
           onClick={onBack}
           icon={<ChevronLeft />}
           label={labelBack}

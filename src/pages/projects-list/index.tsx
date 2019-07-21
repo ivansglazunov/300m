@@ -5,7 +5,6 @@ import withTracker from "../../simulate";
 import ProjectsList from "../../components/projects-list";
 import { Area } from "../../components/slice-area";
 import Navigation from "../../components/navigation/down";
-import BackButton from "../../components/navigation/up";
 
 export default withTracker(() => {
   return {};
@@ -14,17 +13,11 @@ export default withTracker(() => {
 
   return (
     <Area
-      top={
-        <BackButton
-          labelBack={t("Back to profile")}
-          labelNow={t("Project List")}
-          onBack={() => history.push("/profile")}
-        />
-      }
       content={
         <ProjectsList
-          onAddProject={() => history.push("/project-owner")}
-          onToProfile={() => history.push("/profile")}
+          onAddProject={() => history.push("/create-project/1")}
+          onProjects={() => history.push("/projects-list")}
+          onInvitations={() => history.push("/project-invites-list")}
           projects={[
             // внутри данных только данные, никакой верстки или реакци
             // только то что можно получить из базы данных
@@ -57,6 +50,7 @@ export default withTracker(() => {
           onToTeams={() => history.push("/teams-list")}
           onToProjects={() => history.push("/projects-list")}
           onToNotification={() => history.push("/")}
+          selectedTab="project"
         />
       }
     />
