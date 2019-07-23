@@ -26,7 +26,8 @@ export default withTracker(() => {
           onMembers={() => history.push("/members-team")}
           onEdit={() => history.push("/team-editable")}
           title={t("Team title")}
-          description={t("Team description")}
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          // {t("Team description")}
           adjoins={t("Adjoins list")}
         />
       }

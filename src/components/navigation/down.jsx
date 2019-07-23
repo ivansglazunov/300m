@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 const StyledBadgeUp = withStyles(theme => ({
   badge: {
     top: 5,
-    right: -25,
+    right: -20,
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === "light"
@@ -28,7 +28,7 @@ const StyledBadgeUp = withStyles(theme => ({
 const StyledBadgeDown = withStyles(theme => ({
   badge: {
     top: 20,
-    right: -25,
+    right: -20,
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === "light"

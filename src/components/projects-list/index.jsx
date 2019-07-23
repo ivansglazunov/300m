@@ -19,7 +19,7 @@ import OneItem from "./item";
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
-    right: -11,
+    right: 7,
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === "light"

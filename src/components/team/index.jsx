@@ -10,9 +10,10 @@ import {
   Card,
   CardContent,
   IconButton,
-  Container
+  Container,
+  ListItemAvatar
 } from "@material-ui/core";
-import { Edit } from "@material-ui/icons";
+import { Edit, MoreVert } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -43,6 +44,9 @@ export default ({ title, description, onEdit, adjoins, onMembers }) => {
         </CardContent>
         <List>
           <ListItem alignItems="flex-start" button onClick={onMembers}>
+            {/* <ListItemAvatar>
+                <MoreVert />
+            </ListItemAvatar> */}
             <ListItemText primary={adjoins} />
           </ListItem>
         </List>
