@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { useTranslation } from "react-i18next";
 
 import {
@@ -12,9 +13,23 @@ import {
   IconButton,
   Container
 } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
 import { Edit } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
+
+const StyledBadge = withStyles(theme => ({
+  badge: {
+    top: "45%",
+    right: 5,
+    // The border color match the background color.
+    border: `2px solid ${
+      theme.palette.type === "light"
+        ? theme.palette.grey[200]
+        : theme.palette.grey[900]
+    }`
+  }
+}))(Badge);
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -51,9 +66,9 @@ export default ({ title, description, onEdit, membersList, stages }) => {
           <ListItem component={Link} button to="/project-stages">
             {stages}
           </ListItem>
-          <Badge className={classes.margin} badgeContent={2} color="primary">
+          <StyledBadge badgeContent={2} color="primary">
             <ListItem button>{t("Profile Notification")}</ListItem>
-          </Badge>
+          </StyledBadge>
         </List>
       </Card>
     </Container>

@@ -13,9 +13,11 @@ import {
   Typography,
   Collapse
 } from "@material-ui/core";
-import { StarRate, ExpandMore, ExpandLess } from "@material-ui/icons";
+import { ExpandMore, ExpandLess } from "@material-ui/icons";
 
 import { useTranslation } from "react-i18next";
+
+import Favorite from "../add-to-teams/";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
@@ -30,7 +32,7 @@ const StyledBadge = withStyles(theme => ({
   }
 }))(Badge);
 
-export default ({ name, stages }) => {
+export default ({ name, stages, onUser }) => {
   // const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const { t } = useTranslation();
@@ -43,7 +45,11 @@ export default ({ name, stages }) => {
     <>
       <ListItem>
         <ListItemText
-          primary={name}
+          primary={
+            <ListItem button onClick={onUser}>
+              {name}
+            </ListItem>
+          }
           secondary={
             stages ? (
               <StyledBadge
@@ -57,7 +63,7 @@ export default ({ name, stages }) => {
           }
         />
         <ListItemAvatar>
-          <StarRate />
+          <Favorite />
         </ListItemAvatar>
         <ListItemSecondaryAction>
           {stages ? (

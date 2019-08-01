@@ -22,6 +22,7 @@ import { Search } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
+import Favorite from "../add-to-teams";
 import { Area } from "../slice-area/index";
 import { useTranslation } from "react-i18next";
 
@@ -127,6 +128,7 @@ export default ({
                             "aria-label": "primary checkbox"
                           }}
                         />
+                        <Favorite />
                       </ListItemSecondaryAction>
                     </ListItem>
                   </List>

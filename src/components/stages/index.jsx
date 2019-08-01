@@ -16,7 +16,7 @@ import StagesItem from "./stages-item";
 import { Area } from "../slice-area";
 import { useTranslation } from "react-i18next";
 
-export default ({ onEdit, onAddStage, stages }) => {
+export default ({ onEdit, onAddStage, stages, onUser }) => {
   const [edit, setEdit] = useState(false);
   const [create, setCreate] = useState(false);
   const [open, setOpen] = useState(false);
@@ -32,7 +32,12 @@ export default ({ onEdit, onAddStage, stages }) => {
         content={
           <Container>
             {stages.map(stage => (
-              <StagesItem key={stage._id} stage={stage} onEdit={onEdit} />
+              <StagesItem
+                key={stage._id}
+                stage={stage}
+                onEdit={onEdit}
+                onUser={onUser}
+              />
             ))}
           </Container>
         }

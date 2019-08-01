@@ -62,34 +62,6 @@ export default ({ description, address, day, time }) => {
                 />
               </ListItem>
             ) : null}
-
-            {/* <ListItemText
-                primary={
-                  !open ? (
-                    <>
-                    <div>
-                      <Typography variant="caption">
-                        {address}
-                      </Typography>
-                      <Typography variant="caption">
-                        <Today className={classes.svg} />{day}&emsp;<AccessTime className={classes.svg} />{time}
-                      </Typography>
-                      <Typography variant="caption">
-                        {address}
-                        <br />
-                        <Today className={classes.svg} />{day}&emsp;<AccessTime className={classes.svg} />{time}
-                      </Typography>
-                    </div>
-                    <div>
-                      <Typography variant="caption">
-                        <Today className={classes.svg} />{day}&emsp;<AccessTime className={classes.svg} />{time}
-                      </Typography>
-                    </div>
-                    </>
-                  ) : null
-                }
-              /> */}
-            {/* </ListItem> */}
           </List>
           <ExpansionPanelActions style={{ width: "100%", padding: 0 }}>
             <IconButton onClick={handleClick}>

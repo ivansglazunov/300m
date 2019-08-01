@@ -82,9 +82,7 @@ export default ({
           onClick={onToTeams}
           icon={
             <StyledBadgeUp badgeContent={1} color="primary">
-              <StyledBadgeDown badgeContent={1} color="secondary">
-                <People />
-              </StyledBadgeDown>
+              <People />
             </StyledBadgeUp>
           }
           label={t("Teams")}

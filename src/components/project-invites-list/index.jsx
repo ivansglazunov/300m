@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   makeStyles,
@@ -7,24 +7,27 @@ import {
   List,
   ListItem,
   ListItemSecondaryAction,
-  ButtonBase,
   Container,
   Badge,
   Tabs,
   Tab,
   withStyles,
-  Card
+  Card,
+  Collapse,
+  CardContent,
+  Typography,
+  Checkbox,
+  ListItemIcon
 } from "@material-ui/core";
-import { Add, Clear } from "@material-ui/icons";
+import { ExpandMore, Today, AccessTime, ExpandLess } from "@material-ui/icons";
 
-import StageForInvites from "./stage-for-invites";
 import { Area } from "../slice-area";
 import { useTranslation } from "react-i18next";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
-    right: -11,
+    right: 7,
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === "light"
@@ -52,6 +55,10 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     margin: 0
+  },
+
+  svg: {
+    width: 17
   }
 }));
 
@@ -71,6 +78,11 @@ export default ({
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+
+  function handleClick() {
+    setOpen(!open);
+  }
 
   return (
     <>
@@ -97,41 +109,51 @@ export default ({
         content={
           <Container>
             <Card>
-              <List>
+              <List dense>
                 <ListItem>
                   <ListItemText
                     style={{ textAlign: "left", paddingRight: 100 }}
                     primary={
-                      <Button
+                      <ListItem>
+                        <Typography variant="h6" component="h1">
+                          {t("Project title")}
+                        </Typography>
+                      </ListItem>
+                    }
+                    secondary={
+                      <ListItem
+                        button
                         onClick={onUser}
                         style={{ textDecoration: "underline" }}
                       >
-                        {name}
-                      </Button>
+                        от {name}
+                      </ListItem>
                     }
-                    secondary={description}
                   />
-                  <ListItemSecondaryAction>
-                    <ButtonBase onClick={onAccept}>
-                      <Button color="primary" edge="add" aria-label="add">
-                        <Add />
-                      </Button>
-                    </ButtonBase>
-                    <ButtonBase onClick={onRefuse}>
-                      <Button color="secondary" edge="clear" aria-label="clear">
-                        <Clear />
-                      </Button>
-                    </ButtonBase>
+                </ListItem>
+                <ListItem>
+                  <ListItemIcon>
+                    <Button>{t("Refuse")}</Button>
+                    <Button>{t("Accept")}</Button>
+                  </ListItemIcon>
+                  <ListItemSecondaryAction onClick={handleClick}>
+                    {!open ? <ExpandMore /> : <ExpandLess />}
                   </ListItemSecondaryAction>
                 </ListItem>
               </List>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography variant="caption">
+                    {address}
+                    <br />
+                    <Today className={classes.svg} />
+                    {day}&emsp;
+                    <AccessTime className={classes.svg} />
+                    {time}
+                  </Typography>
+                </CardContent>
+              </Collapse>
             </Card>
-            <StageForInvites
-              address={address}
-              description={description}
-              day={day}
-              time={time}
-            />
           </Container>
         }
       />

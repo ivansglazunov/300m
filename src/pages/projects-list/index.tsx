@@ -15,7 +15,7 @@ export default withTracker(() => {
     <Area
       content={
         <ProjectsList
-          onAddProject={() => history.push("/create-project/1")}
+          onAddProject={() => history.push("/project")}
           onProjects={() => history.push("/projects-list")}
           onInvitations={() => history.push("/project-invites-list")}
           projects={[
@@ -46,10 +46,10 @@ export default withTracker(() => {
       }
       bottom={
         <Navigation
-          onToProfile={() => history.push("/profile")}
+          onToProfile={() => history.push("/user")}
           onToTeams={() => history.push("/teams-list")}
           onToProjects={() => history.push("/projects-list")}
-          onToNotification={() => history.push("/")}
+          onToNotification={() => history.push("/activity")}
           selectedTab="project"
         />
       }

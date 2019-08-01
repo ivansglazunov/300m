@@ -26,7 +26,8 @@ const useStyles = makeStyles(theme => ({
 
 export default ({
   stage: { title, description, address, name, durationFrom, durationTo },
-  onEdit
+  onEdit,
+  onUser
 }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -103,7 +104,13 @@ export default ({
               disableGutters={true}
               style={{ paddingTop: 0, paddingBottom: 0 }}
             >
-              <ListItemText primary={name} />
+              <ListItemText
+                primary={
+                  <ListItem button onClick={onUser}>
+                    {name}
+                  </ListItem>
+                }
+              />
             </ListItem>
           </List>
         </ExpansionPanelDetails>

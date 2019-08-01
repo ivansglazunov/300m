@@ -42,14 +42,20 @@ export default withTracker(() => {
             { _id: "b", name: "Cap Sanders", stages: [] },
             { _id: "c", name: "Ronald MacDonald" }
           ]}
+          onUser={() => history.push("/user")}
+          // name='Иванов А.П.'
+          membersConfirmation={[
+            { _id: "1", name: "Иванов А.П." },
+            { _id: "2", name: "Петров В.Е." }
+          ]}
         />
       }
       bottom={
         <Navigation
-          onToProfile={() => history.push("/profile")}
+          onToProfile={() => history.push("/user")}
           onToTeams={() => history.push("/teams-list")}
           onToProjects={() => history.push("/projects-list")}
-          onToNotification={() => history.push("/")}
+          onToNotification={() => history.push("/activity")}
           selectedTab="team"
         />
       }

@@ -11,14 +11,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ stages, onEdit }) => {
+export default ({ stages, onEdit, onUser }) => {
   const { t } = useTranslation();
   const classes = useStyles();
 
   return (
     <Container>
       {stages.map(stage => (
-        <StagesItem key={stage._id} stage={stage} onEdit={onEdit} />
+        <StagesItem
+          key={stage._id}
+          stage={stage}
+          onEdit={onEdit}
+          onUser={onUser}
+        />
       ))}
     </Container>
   );

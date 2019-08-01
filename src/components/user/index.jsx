@@ -3,6 +3,8 @@ import React from "react";
 import { Grid, Avatar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import Favorite from "../add-to-teams";
+
 const useStyles = makeStyles({
   avatar: {
     margin: 15,
@@ -27,7 +29,7 @@ export default ({ name, src, alt, date }) => {
         spacing={2}
       >
         <Typography component="h5" variant="h5" display="block" gutterBottom>
-          {name}
+          {name} <Favorite />
         </Typography>
         <Typography variant="overline" display="block">
           {date}

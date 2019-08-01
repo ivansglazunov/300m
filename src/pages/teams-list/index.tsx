@@ -11,13 +11,11 @@ export default withTracker(() => {
   return {};
 })(({ history }) => {
   const { t } = useTranslation();
-
+  //TODO добавить ссылку в onAddTeam на новую страницу созднаия команды
   return (
     <Area
       content={
         <TeamsList
-          onTeams={() => history.push("/teams-list")}
-          onInvitations={() => history.push("/team-invites-list")}
           onTeam={() => history.push("/team")}
           teams={[
             {
@@ -35,10 +33,10 @@ export default withTracker(() => {
       }
       bottom={
         <Navigation
-          onToProfile={() => history.push("/profile")}
+          onToProfile={() => history.push("/user")}
           onToTeams={() => history.push("/teams-list")}
           onToProjects={() => history.push("/projects-list")}
-          onToNotification={() => history.push("/")}
+          onToNotification={() => history.push("/activity")}
           selectedTab="team"
         />
       }

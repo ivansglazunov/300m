@@ -73,7 +73,24 @@ const resources = {
       "Invitations to projects": "Приглашения в проекты",
       "Invitations to teams": "Приглашения в команды",
       "Team edit": "Редактирование команды",
-      "Back to teams": "Вернуться в команды"
+      "Back to teams": "Вернуться в команды",
+      "Create Project": "Создать проект",
+      "Show map": "Показать карту",
+      Sun: "Вс",
+      Mon: "Пн",
+      Tue: "Вт",
+      Wed: "Ср",
+      Thu: "Чт",
+      Fri: "Пт",
+      Sat: "Сб",
+      Today: "Сегодня",
+      Agree: "Согласен",
+      Disagree: "Не согласен",
+      "Back to members search": "Вернуться к поиску участников",
+      Accept: "Принять",
+      Refuse: "Отказаться",
+      "Awaiting confirmation": "Ожидается подтверждение",
+      "Declined invitation": "Отклонили приглашения"
     }
   }
 };

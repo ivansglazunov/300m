@@ -3,9 +3,6 @@ import { useTranslation } from "react-i18next";
 import withTracker from "../../simulate";
 
 import TeamEditable from "../../components/team-editable";
-import Navigation from "../../components/navigation/down";
-import BackButton from "../../components/navigation/up";
-import { Area } from "../../components/slice-area";
 
 export default withTracker(() => {
   return {};

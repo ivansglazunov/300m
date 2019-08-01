@@ -79,12 +79,6 @@ export default ({}) => {
           </ListItemIcon>
           <ListItemText primary={t("Teams List")} />
         </ListItem>
-        <ListItem button component={Link} to="/team-invites-list">
-          <ListItemIcon>
-            <GroupAdd />
-          </ListItemIcon>
-          <ListItemText primary={t("Team Invites List")} />
-        </ListItem>
         <ListItem button disabled>
           <ListItemIcon>
             <Notifications />

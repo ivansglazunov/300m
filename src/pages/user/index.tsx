@@ -16,9 +16,9 @@ export default withTracker(() => {
     <Area
       top={
         <BackButton
-          labelBack={t("Back to profile")}
+          labelBack={t("Back to members search")}
           labelNow={t("user")}
-          onBack={() => history.push("/profile")}
+          onBack={() => history.push("/members-search")}
         />
       }
       content={
@@ -31,10 +31,10 @@ export default withTracker(() => {
       }
       bottom={
         <Navigation
-          onToProfile={() => history.push("/profile")}
+          onToProfile={() => history.push("/user")}
           onToTeams={() => history.push("/teams-list")}
           onToProjects={() => history.push("/projects-list")}
-          onToNotification={() => history.push("/")}
+          onToNotification={() => history.push("/activity")}
           selectedTab="profile"
         />
       }

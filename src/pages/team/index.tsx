@@ -33,10 +33,10 @@ export default withTracker(() => {
       }
       bottom={
         <Navigation
-          onToProfile={() => history.push("/profile")}
+          onToProfile={() => history.push("/user")}
           onToTeams={() => history.push("/teams-list")}
           onToProjects={() => history.push("/projects-list")}
-          onToNotification={() => history.push("/")}
+          onToNotification={() => history.push("/activity")}
           selectedTab="team"
         />
       }

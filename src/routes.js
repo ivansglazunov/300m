@@ -30,6 +30,9 @@ import SelectStages from "./pages/select-stages-for-members";
 import CreateProject from "./pages/stepper";
 import CreateProjectStage from "./pages/create-project-stage";
 import TeamEditable from "./pages/team-editable";
+import ProjectSteps from "./pages/project-steps";
+import ProjectHeaders from "./pages/project-headers";
+import Activity from "./pages/activity";
 
 const NotFounded = () => <div>404</div>;
 
@@ -55,6 +58,9 @@ export const routes = (
       <Route path="/create-project/:step" component={CreateProject} />
       <Route path="/create-project-stage" component={CreateProjectStage} />
       <Route path="/team-editable" component={TeamEditable} />
+      <Route path="/project-steps" component={ProjectSteps} />
+      <Route path="/project-headers" component={ProjectHeaders} />
+      <Route path="/activity" component={Activity} />
       <Route path="/" component={Profile} />
       <Route component={NotFounded} />
     </Switch>
