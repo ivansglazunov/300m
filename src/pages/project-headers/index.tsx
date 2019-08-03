@@ -10,8 +10,6 @@ export default withTracker(() => {
   const { t } = useTranslation();
   return (
     <Project
-      onProjectOwner={() => history.push("/project-owner")}
-      onAddStage={() => {}}
       onSelectStages={() => history.push("/select-stages-for-members")}
     />
   );

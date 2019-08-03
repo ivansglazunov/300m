@@ -10,9 +10,7 @@ import {
 } from "@material-ui/core";
 
 import Project from "../project-editable/project";
-import Stage from "../stage/stage";
 import Members from "../members-search/search";
-import CreatedStage from "../stage/created-stage";
 import Check from "./check";
 import SimpleStage from "../stage/simple-stage";
 
@@ -45,12 +43,19 @@ function getSteps() {
   ];
 }
 
-// так ты объявляешь функцию возвращающую что-то а не компонент
-// function getStepContent(step, onSelectStages) {
-// что бы это было компонентом он долежн принимать один аргумент пропс:
-function GetStepContent({ step, onSelectStages }) {
-  // то что используется switch никак не мешает ему быть компонентом
-  // он же возвращает элементы и принимает пропсы, а значит он компонент
+function GetStepContent({
+  step,
+  onSelectStages,
+  projectStages,
+  stageTitle,
+  projectTitle,
+  projectDescription,
+  duration,
+  stageDescription,
+  stageAddress,
+  members,
+  usersList
+}) {
   switch (step) {
     case 0:
       return <Project />;
@@ -58,20 +63,43 @@ function GetStepContent({ step, onSelectStages }) {
       return (
         <>
           <SimpleStage />
-          {/* <CreatedStage /> */}
-          {/* <Stage />  */}
         </>
       );
     case 2:
       return <Members onSelectStages={onSelectStages} />;
     case 3:
-      return <Check />;
+      return (
+        <Check
+          projectStages={projectStages}
+          stageTitle={stageTitle}
+          projectTitle={projectTitle}
+          projectDescription={projectDescription}
+          duration={duration}
+          stageDescription={stageDescription}
+          stageAddress={stageAddress}
+          members={members}
+          usersList={usersList}
+        />
+      );
     default:
       return "Unknown step";
   }
 }
 
-export default ({ onProjectOwner, onAddStage, onSelectStages }) => {
+export default ({
+  onProjectOwner,
+  onAddStage,
+  onSelectStages,
+  projectStages,
+  stageTitle,
+  projectTitle,
+  projectDescription,
+  duration,
+  stageDescription,
+  stageAddress,
+  members,
+  usersList
+}) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
@@ -100,7 +128,19 @@ export default ({ onProjectOwner, onAddStage, onSelectStages }) => {
               {/* правильно так: */}
               {/* {getStepContent(index, onSelectStages)} */}
               {/* так как я переделал это в компонент, лучше компонентом */}
-              <GetStepContent step={index} onSelectStages={onSelectStages} />
+              <GetStepContent
+                step={index}
+                onSelectStages={onSelectStages}
+                projectStages={projectStages}
+                stageTitle={stageTitle}
+                projectTitle={projectTitle}
+                projectDescription={projectDescription}
+                duration={duration}
+                stageDescription={stageDescription}
+                stageAddress={stageAddress}
+                members={members}
+                usersList={usersList}
+              />
               {/* компоненты отображаются в дереве реакт дебагера, а просто вызов функции нет */}
               <div className={classes.actionsContainer}>
                 <div>

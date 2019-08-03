@@ -10,10 +10,11 @@ import {
   ListItemText,
   ListItem,
   IconButton,
-  ExpansionPanelActions
+  ExpansionPanelActions,
+  ListItemSecondaryAction
 } from "@material-ui/core";
 
-import { ExpandMore, ExpandLess, Edit } from "@material-ui/icons";
+import { ExpandMore, ExpandLess, Edit, Map } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -99,6 +100,11 @@ export default ({
               style={{ paddingTop: 0, paddingBottom: 0 }}
             >
               <ListItemText primary={address} />
+              <ListItemSecondaryAction>
+                <IconButton edge="end">
+                  <Map />
+                </IconButton>
+              </ListItemSecondaryAction>
             </ListItem>
             <ListItem
               disableGutters={true}

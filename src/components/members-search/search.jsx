@@ -56,7 +56,37 @@ export default ({ onSelectStages }) => {
   return (
     <>
       {value === "search" && (
-        <div style={{ padding: "0 20px" }}>
+        <div>
+          <List>
+            <ListItem
+              dense
+              component={Link}
+              to="/user"
+              divider
+              classes={{ gutters: classes.gutters }}
+            >
+              <ListItemAvatar>
+                <Avatar
+                  alt="montagnik"
+                  src="https://96.img.avito.st/640x480/5475959896.jpg"
+                  className={classes.avatar}
+                />
+              </ListItemAvatar>
+              <ListItemText
+                primary="Семенов Ф.А."
+                secondary={t("Short description of the worker")}
+              />
+              <ListItemSecondaryAction>
+                <Checkbox
+                  checked={true}
+                  value="checkedA"
+                  inputProps={{
+                    "aria-label": "primary checkbox"
+                  }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          </List>
           <TextField
             id="outlined-search"
             label={t("Search member")}
@@ -105,34 +135,38 @@ export default ({ onSelectStages }) => {
         </div>
       )}
       {value === "checked" && (
-        <div>
-          <List>
-            <ListItem dense component={Link} to="/user" divider>
-              <ListItemAvatar>
-                <Avatar
-                  alt="montagnik"
-                  src="https://96.img.avito.st/640x480/5475959896.jpg"
-                  className={classes.avatar}
-                />
-              </ListItemAvatar>
-              <ListItemText
-                primary="Семенов Ф.А."
-                secondary={t("Short description of the worker")}
+        <List>
+          <ListItem
+            dense
+            component={Link}
+            to="/user"
+            divider
+            classes={{ gutters: classes.gutters }}
+          >
+            <ListItemAvatar>
+              <Avatar
+                alt="montagnik"
+                src="https://96.img.avito.st/640x480/5475959896.jpg"
+                className={classes.avatar}
               />
-              <ListItemSecondaryAction>
-                <Checkbox
-                  checked={true}
-                  value="checkedA"
-                  inputProps={{
-                    "aria-label": "primary checkbox"
-                  }}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-          </List>
-        </div>
+            </ListItemAvatar>
+            <ListItemText
+              primary="Семенов Ф.А."
+              secondary={t("Short description of the worker")}
+            />
+            <ListItemSecondaryAction>
+              <Checkbox
+                checked={true}
+                value="checkedA"
+                inputProps={{
+                  "aria-label": "primary checkbox"
+                }}
+              />
+            </ListItemSecondaryAction>
+          </ListItem>
+        </List>
       )}
-      <Button onClick={onSelectStages}>{t("Select stages for members")}</Button>
+      {/* <Button onClick={onSelectStages}>{t("Select stages for members")}</Button> */}
     </>
   );
 };

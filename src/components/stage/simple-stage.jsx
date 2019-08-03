@@ -7,13 +7,11 @@ import InfiniteCalendar, {
 } from "react-infinite-calendar";
 import "react-infinite-calendar/styles.css";
 
-import { TextField, makeStyles, MenuItem, Grid } from "@material-ui/core";
+import { YMaps, Map, GeolocationControl, Placemark } from "react-yandex-maps";
 
-import {
-  MuiPickersUtilsProvider,
-  TimePicker,
-  DateTimePicker
-} from "@material-ui/pickers";
+import { TextField, makeStyles, MenuItem, Grid, Zoom } from "@material-ui/core";
+
+import { MuiPickersUtilsProvider, TimePicker } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
 import { useTranslation } from "react-i18next";
 
@@ -99,6 +97,7 @@ export default ({}) => {
   const [values, setValues] = useState({
     duration: "one"
   });
+  const [openMap, setOpenMap] = useState(false);
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
@@ -183,16 +182,46 @@ export default ({}) => {
         interpolateSelection={defaultMultipleDateInterpolation}
         selected={[new Date()]}
       />
-      <TextField
-        fullWidth
-        value={valueAddress}
-        margin="dense"
-        label={t("Address")}
-        variant="outlined"
-        placeholder={t("address")}
-        onChange={event => setValueAddress(event.target.value)}
-      />
-      <a href="">{t("Show map")}</a>
+      <div>
+        <TextField
+          fullWidth
+          value={valueAddress}
+          margin="dense"
+          label={t("Address")}
+          variant="outlined"
+          placeholder={t("address")}
+          onChange={event => setValueAddress(event.target.value)}
+          onClick={() => setOpenMap(!openMap)}
+        />
+        {/* <Zoom in={openMap} ±
+      // style={{ transitionDelay: openMap ? '500ms' : '0ms' }}
+      > */}
+        {openMap && (
+          <YMaps>
+            <Map
+              style={{
+                border: "1px solid #ededed",
+                width: "100%",
+                height: 240
+              }}
+              state={{
+                center: [55.820328, 37.64223],
+                zoom: 9,
+                controls: []
+              }}
+            >
+              <Placemark
+                geometry={[55.820328, 37.64223]}
+                properties={{
+                  balloonContentBody: "Your address"
+                }}
+              />
+              <GeolocationControl options={{ float: "left" }} />
+            </Map>
+          </YMaps>
+        )}
+        {/* </Zoom> */}
+      </div>
     </>
   );
 };

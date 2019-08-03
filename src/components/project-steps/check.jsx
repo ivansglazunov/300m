@@ -1,50 +1,75 @@
 import React from "react";
-import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
+import {
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Grid
+} from "@material-ui/core";
 
 //страница со строками заполненными на предыдущих шагах
-export default ({}) => {
+export default ({
+  projectStages,
+  stageTitle,
+  projectTitle,
+  projectDescription,
+  duration,
+  stageDescription,
+  stageAddress,
+  members,
+  usersList
+}) => {
   return (
     <>
       <List>
         <Typography variant="h5">Проект</Typography>
         <ListItem>
-          <ListItemText primary={"Название проекта"} />
+          <ListItemText primary={projectTitle} />
+        </ListItem>
+        <ListItem>
+          <ListItemText primary={projectDescription} />
+        </ListItem>
+        <Typography variant="h5">{projectStages}</Typography>
+        <ListItem>
+          <ListItemText primary={stageTitle} />
         </ListItem>
         <ListItem>
           <ListItemText
             primary={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            }
-          />
-        </ListItem>
-        <Typography variant="h5">Этапы проекта</Typography>
-        <ListItem>
-          <ListItemText
-            primary={"Этап номер один"}
-            secondary={
               <ul>
-                <li>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </li>
+                <li>{stageDescription}</li>
                 <li>21.09 13:30 - 21.09 19:00</li>
-                <li>ул. Вавилова, 24 к2</li>
+                <li>{stageAddress}</li>
               </ul>
             }
           />
         </ListItem>
-        <Typography variant="h5">Участники проекта</Typography>
         <ListItem>
-          <ListItemText
-            secondary={
-              <ul>
-                <li>Сапрыкин А.А.</li>
-                <li>Нефедов С.А.</li>
-                <li>терехов В.П.</li>
-              </ul>
-            }
-          />
+          <ListItemText primary={duration} />
         </ListItem>
+        <Grid
+          container
+          direction="row"
+          justify="flex-start"
+          alignItems="center"
+        >
+          <Grid item xs={2}>
+            <ListItem>
+              <ListItemText primary={2} secondary={"дня"} />
+            </ListItem>
+          </Grid>
+          <Grid item xs={2}>
+            <ListItem>
+              <ListItemText primary={10} secondary={"часов"} />
+            </ListItem>
+          </Grid>
+        </Grid>
+        <Typography variant="h5">{usersList}</Typography>
+        {members.map(member => (
+          <ListItem dense>
+            <ListItemText key={member._id} primary={member.userName} />
+          </ListItem>
+        ))}
       </List>
     </>
   );

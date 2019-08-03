@@ -15,7 +15,7 @@ export default withTracker(() => {
     <Area
       content={
         <ProjectsList
-          onAddProject={() => history.push("/project")}
+          onAddProject={() => history.push("/project-steps")}
           onProjects={() => history.push("/projects-list")}
           onInvitations={() => history.push("/project-invites-list")}
           projects={[
