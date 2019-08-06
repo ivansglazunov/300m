@@ -123,11 +123,6 @@ export default ({
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
             <StepContent classes={{ root: classes.root }}>
-              {/* функция изанчально принимала два аргумента, здесь принимается только один */}
-              {/* {getStepContent(index)} */}
-              {/* правильно так: */}
-              {/* {getStepContent(index, onSelectStages)} */}
-              {/* так как я переделал это в компонент, лучше компонентом */}
               <GetStepContent
                 step={index}
                 onSelectStages={onSelectStages}
@@ -141,7 +136,6 @@ export default ({
                 members={members}
                 usersList={usersList}
               />
-              {/* компоненты отображаются в дереве реакт дебагера, а просто вызов функции нет */}
               <div className={classes.actionsContainer}>
                 <div>
                   <Button

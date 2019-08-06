@@ -19,8 +19,6 @@ export default withTracker(() => {
           onProjects={() => history.push("/projects-list")}
           onInvitations={() => history.push("/project-invites-list")}
           projects={[
-            // внутри данных только данные, никакой верстки или реакци
-            // только то что можно получить из базы данных
             {
               _id: "a",
               title: t("Project title"),
@@ -35,10 +33,6 @@ export default withTracker(() => {
             }
           ]}
           onProjectClick={(event, { role }) => {
-            // функция поставляется отдельно
-            // получает вторым аргументом проект по которому кликнули
-            // потому что мы его передали там вторым аргументом
-            // и решает что делать
             if (role === "owner") history.push("/project-owner");
             else history.push("/project-member");
           }}

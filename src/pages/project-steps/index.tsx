@@ -32,7 +32,7 @@ export default withTracker(() => {
         },
         {
           _id: "2",
-          userName: "Карпов А.Ф."
+          userName: "Иванов А.В."
         }
       ]}
     />

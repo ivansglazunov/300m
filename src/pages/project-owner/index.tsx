@@ -28,6 +28,17 @@ export default withTracker(() => {
           title={t("Project title")}
           description="1234567"
           stages={t("Stages List")}
+          titleAccept={"Принято приглашение"}
+          descriptionAccept={
+            'Иванов А.А. принял приглашние в проект "Весело шагать по просторам"'
+          }
+          timeAccept={"12:47"}
+          titleRefuse={"Отклонено приглашение"}
+          descriptionRefuse={
+            'Смирнов В.А. отклонил приглашние в проект "Весело шагать по просторам"'
+          }
+          timeRefuse={"11:29"}
+          onAccept={() => history.push("/members-list")}
         />
       }
       bottom={

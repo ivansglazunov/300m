@@ -61,7 +61,7 @@ export default ({ teamDescription, onEdit }) => {
     <>
       <ListItem alignItems="flex-start">
         {!edit ? (
-          <ListItemText primary={teamDescription} />
+          <ListItemText primary={teamDescription} style={{ marginRight: 76 }} />
         ) : (
           <TextField
             fullWidth

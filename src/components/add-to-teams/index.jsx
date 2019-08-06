@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({}) => {
+export default ({ className }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -44,7 +44,7 @@ export default ({}) => {
 
   return (
     <>
-      <IconButton onClick={handleClick}>
+      <IconButton onClick={handleClick} className={className}>
         <StarRate />
       </IconButton>
       <Menu

@@ -71,10 +71,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexWrap: "wrap"
   },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1)
-  },
   dense: {
     marginTop: theme.spacing(2)
   },
@@ -84,9 +80,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     marginRight: 0,
     marginLeft: -2
-  },
-  minWidth: {
-    minWidth: 325
   }
 }));
 
@@ -135,7 +128,6 @@ export default ({}) => {
             fullWidth
             id="outlined-select-duration"
             select
-            className={classes.textField}
             value={values.duration}
             onChange={handleChange("duration")}
             SelectProps={{
@@ -155,7 +147,6 @@ export default ({}) => {
         </Grid>
       </Grid>
       <InfiniteCalendar
-        className={classes.minWidth}
         width="100%"
         displayOptions={{
           showHeader: false,

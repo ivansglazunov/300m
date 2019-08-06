@@ -90,7 +90,9 @@ const resources = {
       Accept: "Принять",
       Refuse: "Отказаться",
       "Awaiting confirmation": "Ожидается подтверждение",
-      "Declined invitation": "Отклонили приглашения"
+      "Declined invitation": "Отклонили приглашения",
+      Tomorrow: "Завтра",
+      Passed: "Прошло"
     }
   }
 };

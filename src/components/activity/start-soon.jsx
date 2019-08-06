@@ -9,8 +9,8 @@ import {
   makeStyles,
   ListItemText
 } from "@material-ui/core";
-import { Warning } from "@material-ui/icons";
-import { red } from "@material-ui/core/colors";
+import { Alarm } from "@material-ui/icons";
+import { blue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,54 +27,44 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default ({
-  titleLate,
-  descriptionStageLate,
-  descriptionWorkLate,
-  timePassedLate,
-  timeLeftLate,
-  leftLate,
-  passedLate,
-  addressLate,
+  titleStartSoon,
+  descriptionStageStartSoon,
+  descriptionWorkStartSoon,
+  timeStartSoon,
+  dayStartSoon,
+  addressStartSoon,
   onProject
 }) => {
   const classes = useStyles();
 
   return (
     <>
-      <List
-        disablePadding={true}
-        button
-        onClick={onProject}
-        style={{ backgroundColor: "#ee44448a" }}
-      >
+      <List disablePadding={true} button onClick={onProject}>
         <ListItem dense>
           <ListItemAvatar>
             <Avatar
-              style={{ color: "#fff", backgroundColor: red[500], margin: 10 }}
+              style={{ color: "#fff", backgroundColor: blue[500], margin: 10 }}
             >
-              <Warning />
+              <Alarm />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
             classes={{ primary: classes.primary }}
             primaryTypographyProps={{ variant: "h6" }}
-            primary={titleLate}
+            primary={titleStartSoon}
             secondary={
               <>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {addressLate}
+                  {addressStartSoon}
                 </Typography>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {passedLate}&emsp;{timePassedLate}
+                  {dayStartSoon}, в {timeStartSoon}
                 </Typography>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {leftLate}&emsp;{timeLeftLate}
+                  {descriptionStageStartSoon}
                 </Typography>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {descriptionStageLate}
-                </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
-                  {descriptionWorkLate}
+                  {descriptionWorkStartSoon}
                 </Typography>
               </>
             }

@@ -29,21 +29,6 @@ export default ({
         <ListItem>
           <ListItemText primary={projectDescription} />
         </ListItem>
-        <Typography variant="h5">{projectStages}</Typography>
-        <ListItem>
-          <ListItemText primary={stageTitle} />
-        </ListItem>
-        <ListItem>
-          <ListItemText
-            primary={
-              <ul>
-                <li>{stageDescription}</li>
-                <li>21.09 13:30 - 21.09 19:00</li>
-                <li>{stageAddress}</li>
-              </ul>
-            }
-          />
-        </ListItem>
         <ListItem>
           <ListItemText primary={duration} />
         </ListItem>
@@ -64,10 +49,25 @@ export default ({
             </ListItem>
           </Grid>
         </Grid>
+        <Typography variant="h5">{projectStages}</Typography>
+        <ListItem>
+          <ListItemText primary={stageTitle} />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary={
+              <ul>
+                <li>{stageDescription}</li>
+                <li>21.09 13:30 - 21.09 19:00</li>
+                <li>{stageAddress}</li>
+              </ul>
+            }
+          />
+        </ListItem>
         <Typography variant="h5">{usersList}</Typography>
         {members.map(member => (
-          <ListItem dense>
-            <ListItemText key={member._id} primary={member.userName} />
+          <ListItem dense key={member._id}>
+            <ListItemText primary={member.userName} />
           </ListItem>
         ))}
       </List>

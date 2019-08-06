@@ -18,6 +18,9 @@ import { Edit } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
+import Accept from "../activity/accept";
+import Refuse from "../activity/refuse";
+
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
@@ -37,7 +40,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ title, description, onEdit, membersList, stages }) => {
+export default ({
+  title,
+  description,
+  onEdit,
+  membersList,
+  stages,
+  descriptionAccept,
+  titleAccept,
+  timeAccept,
+  descriptionRefuse,
+  titleRefuse,
+  timeRefuse,
+  onAccept
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -66,11 +82,19 @@ export default ({ title, description, onEdit, membersList, stages }) => {
           <ListItem component={Link} button to="/project-stages">
             {stages}
           </ListItem>
-          <StyledBadge badgeContent={2} color="primary">
-            <ListItem button>{t("Profile Notification")}</ListItem>
-          </StyledBadge>
         </List>
       </Card>
+      <Accept
+        descriptionAccept={descriptionAccept}
+        titleAccept={titleAccept}
+        timeAccept={timeAccept}
+        onAccept={onAccept}
+      />
+      <Refuse
+        descriptionRefuse={descriptionRefuse}
+        titleRefuse={titleRefuse}
+        timeRefuse={timeRefuse}
+      />
     </Container>
   );
 };

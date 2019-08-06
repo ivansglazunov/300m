@@ -76,7 +76,12 @@ export default ({
           </ExpansionPanelActions>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails style={{ paddingTop: 0, paddingBottom: 10 }}>
-          <List style={{ padding: 0 }}>
+          <List
+            style={{
+              padding: 0,
+              width: "100%"
+            }}
+          >
             <ListItem
               disableGutters={true}
               style={{ paddingTop: 0, paddingBottom: 0 }}
@@ -97,7 +102,10 @@ export default ({
             </ListItem>
             <ListItem
               disableGutters={true}
-              style={{ paddingTop: 0, paddingBottom: 0 }}
+              style={{
+                paddingTop: 0,
+                paddingBottom: 0
+              }}
             >
               <ListItemText primary={address} />
               <ListItemSecondaryAction>

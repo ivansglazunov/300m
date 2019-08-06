@@ -9,7 +9,7 @@ import {
   makeStyles,
   ListItemText
 } from "@material-ui/core";
-import { Warning } from "@material-ui/icons";
+import { AvTimer } from "@material-ui/icons";
 import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
@@ -27,14 +27,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default ({
-  titleLate,
-  descriptionStageLate,
-  descriptionWorkLate,
-  timePassedLate,
-  timeLeftLate,
-  leftLate,
-  passedLate,
-  addressLate,
+  titleUnderway,
+  descriptionStageUnderway,
+  descriptionWorkUnderway,
+  timePassedUnderway,
+  timeLeftUnderway,
+  leftUnderway,
+  passedUnderway,
+  addressUnderway,
   onProject
 }) => {
   const classes = useStyles();
@@ -45,36 +45,36 @@ export default ({
         disablePadding={true}
         button
         onClick={onProject}
-        style={{ backgroundColor: "#ee44448a" }}
+        style={{ backgroundColor: "rgba(255, 235, 59, 0.5)" }}
       >
         <ListItem dense>
           <ListItemAvatar>
             <Avatar
               style={{ color: "#fff", backgroundColor: red[500], margin: 10 }}
             >
-              <Warning />
+              <AvTimer />
             </Avatar>
           </ListItemAvatar>
           <ListItemText
             classes={{ primary: classes.primary }}
             primaryTypographyProps={{ variant: "h6" }}
-            primary={titleLate}
+            primary={titleUnderway}
             secondary={
               <>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {addressLate}
+                  {addressUnderway}
                 </Typography>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {passedLate}&emsp;{timePassedLate}
+                  {passedUnderway}&emsp;{timePassedUnderway}
                 </Typography>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {leftLate}&emsp;{timeLeftLate}
+                  {leftUnderway}&emsp;{timeLeftUnderway}
                 </Typography>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {descriptionStageLate}
+                  {descriptionStageUnderway}
                 </Typography>
                 <Typography component="p" variant="body2" color="textPrimary">
-                  {descriptionWorkLate}
+                  {descriptionWorkUnderway}
                 </Typography>
               </>
             }
