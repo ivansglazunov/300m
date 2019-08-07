@@ -27,7 +27,9 @@ export default withTracker(() => {
           onUser={() => history.push("/user")}
           onAccept={() => history.push("/project-member")}
           onRefuse={() => history.push("/")}
-          day="22.08"
+          dateStartInvitation="22.08"
+          dayDuration="2"
+          hourDuration="16"
           time="10:45"
           onProjects={() => history.push("/projects-list")}
           onInvitations={() => history.push("/project-invites-list")}

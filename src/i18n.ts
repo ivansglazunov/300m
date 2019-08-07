@@ -92,7 +92,10 @@ const resources = {
       "Awaiting confirmation": "Ожидается подтверждение",
       "Declined invitation": "Отклонили приглашения",
       Tomorrow: "Завтра",
-      Passed: "Прошло"
+      Passed: "Прошло",
+      Start: "Начало",
+      Days: "Дней",
+      Hours: "Часов"
     }
   }
 };

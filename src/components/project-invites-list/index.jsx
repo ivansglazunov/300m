@@ -17,7 +17,9 @@ import {
   CardContent,
   Typography,
   Checkbox,
-  ListItemIcon
+  ListItemIcon,
+  Grid,
+  Divider
 } from "@material-ui/core";
 import { ExpandMore, Today, AccessTime, ExpandLess } from "@material-ui/icons";
 
@@ -71,9 +73,11 @@ export default ({
   onAccept,
   onRefuse,
   stages,
-  day,
   time,
+  hourDuration,
+  dayDuration,
   onProjects,
+  dateStartInvitation,
   onInvitations
 }) => {
   const classes = useStyles();
@@ -132,6 +136,39 @@ export default ({
                   />
                 </ListItem>
                 <ListItem>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="flex-start"
+                    alignItems="center"
+                  >
+                    <Grid item xs={3} align="center">
+                      <Typography component="div" variant="caption">
+                        {t("Start")}
+                      </Typography>
+                      <Typography component="div" variant="body1">
+                        {dateStartInvitation}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={3} align="center">
+                      <Typography component="div" variant="caption">
+                        {t("Days")}
+                      </Typography>
+                      <Typography component="div" variant="body1">
+                        {dayDuration}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={3} align="center">
+                      <Typography component="div" variant="caption">
+                        {t("Hours")}
+                      </Typography>
+                      <Typography component="div" variant="body1">
+                        {hourDuration}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </ListItem>
+                <ListItem>
                   <ListItemIcon>
                     <Button>{t("Refuse")}</Button>
                     <Button>{t("Accept")}</Button>
@@ -143,13 +180,17 @@ export default ({
               </List>
               <Collapse in={open} timeout="auto" unmountOnExit>
                 <CardContent>
-                  <Typography variant="caption">
+                  <Typography variant="body1" gutterBottom>
+                    {description}
+                  </Typography>
+                  <Divider />
+                  <Typography variant="body2">
                     {address}
-                    <br />
+                    {/* <br />
                     <Today className={classes.svg} />
-                    {day}&emsp;
+                    {dateStartInvitation}&emsp;
                     <AccessTime className={classes.svg} />
-                    {time}
+                    {time} */}
                   </Typography>
                 </CardContent>
               </Collapse>
