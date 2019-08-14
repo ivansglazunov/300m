@@ -16,12 +16,9 @@ const StyledBadgeUp = withStyles(theme => ({
   badge: {
     top: 5,
     right: -20,
-    // The border color match the background color.
-    border: `2px solid ${
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[900]
-    }`
+    boxShadow: "0 0 2px 0 #DD2E34",
+    backgroundColor: "#FFE20C",
+    color: "#111f33"
   }
 }))(Badge);
 
@@ -29,12 +26,9 @@ const StyledBadgeDown = withStyles(theme => ({
   badge: {
     top: 20,
     right: -20,
-    // The border color match the background color.
-    border: `2px solid ${
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[900]
-    }`
+    boxShadow: "0 0 2px 0 #DD2E34",
+    backgroundColor: "#DD2E34",
+    color: "#111f33"
   }
 }))(Badge);
 
@@ -51,19 +45,12 @@ export default ({
   const classes = useStyles();
 
   return (
-    <Paper
-      square="false"
-      elevation="2"
-      style={{
-        backgroundColor: "#3f51b5"
-      }}
-    >
+    <Paper square="false" elevation="2">
       <Tabs variant="fullWidth" centered value={selectedTab}>
         <Tab
           style={{
             color: "#fff",
             textTransform: "none",
-            backgroundColor: "#3f51b5",
             opacity: 1
           }}
           value="profile"
@@ -75,7 +62,6 @@ export default ({
           style={{
             color: "#fff",
             textTransform: "none",
-            backgroundColor: "#3f51b5",
             opacity: 1
           }}
           value="team"
@@ -91,7 +77,6 @@ export default ({
           style={{
             color: "#fff",
             textTransform: "none",
-            backgroundColor: "#3f51b5",
             opacity: 1
           }}
           value="project"
@@ -109,7 +94,6 @@ export default ({
           style={{
             color: "#fff",
             textTransform: "none",
-            backgroundColor: "#3f51b5",
             opacity: 1
           }}
           value="activity"

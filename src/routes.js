@@ -38,32 +38,41 @@ const NotFounded = () => <div>404</div>;
 
 export const routes = (
   <ThemeProvider theme={theme}>
-    <Switch>
-      <Route path="/user" component={User} />
-      <Route path="/projects-list" component={ProjectsList} />
-      <Route path="/project-invites-list" component={ProjectInvites} />
-      <Route path="/teams-list" component={TeamsList} />
-      <Route path="/team-invites-list" component={TeamInvitesList} />
-      <Route path="/project-member" component={ProjectMember} />
-      <Route path="/project-owner" component={ProjectOwner} />
-      <Route path="/members-list" component={MembersList} />
-      <Route path="/members-team" component={MembersTeam} />
-      <Route path="/project-stages" component={ProjectStages} />
-      <Route path="/project-editable" component={ProjectEditable} />
-      <Route path="/team" component={Team} />
-      <Route path="/members-search" component={MembersSearch} />
-      <Route path="/stages" component={Stages} />
-      <Route path="/select-stages-for-members" component={SelectStages} />
-      <Route path="/stage" component={Stage} />
-      <Route path="/create-project/:step" component={CreateProject} />
-      <Route path="/create-project-stage" component={CreateProjectStage} />
-      <Route path="/team-editable" component={TeamEditable} />
-      <Route path="/project-steps" component={ProjectSteps} />
-      <Route path="/project-headers" component={ProjectHeaders} />
-      <Route path="/activity" component={Activity} />
-      <Route path="/" component={Profile} />
-      <Route component={NotFounded} />
-    </Switch>
+    <div
+      style={{
+        backgroundColor: "#0b1421",
+        position: "absolute",
+        width: "100%",
+        height: "100%"
+      }}
+    >
+      <Switch>
+        <Route path="/user" component={User} />
+        <Route path="/projects-list" component={ProjectsList} />
+        <Route path="/project-invites-list" component={ProjectInvites} />
+        <Route path="/teams-list" component={TeamsList} />
+        <Route path="/team-invites-list" component={TeamInvitesList} />
+        <Route path="/project-member" component={ProjectMember} />
+        <Route path="/project-owner" component={ProjectOwner} />
+        <Route path="/members-list" component={MembersList} />
+        <Route path="/members-team" component={MembersTeam} />
+        <Route path="/project-stages" component={ProjectStages} />
+        <Route path="/project-editable" component={ProjectEditable} />
+        <Route path="/team" component={Team} />
+        <Route path="/members-search" component={MembersSearch} />
+        <Route path="/stages" component={Stages} />
+        <Route path="/select-stages-for-members" component={SelectStages} />
+        <Route path="/stage" component={Stage} />
+        <Route path="/create-project/:step" component={CreateProject} />
+        <Route path="/create-project-stage" component={CreateProjectStage} />
+        <Route path="/team-editable" component={TeamEditable} />
+        <Route path="/project-steps" component={ProjectSteps} />
+        <Route path="/project-headers" component={ProjectHeaders} />
+        <Route path="/activity" component={Activity} />
+        <Route path="/" component={Profile} />
+        <Route component={NotFounded} />
+      </Switch>
+    </div>
   </ThemeProvider>
 );
 

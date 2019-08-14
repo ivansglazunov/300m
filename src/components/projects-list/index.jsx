@@ -15,17 +15,15 @@ import { Add } from "@material-ui/icons";
 
 import { Area } from "../slice-area/index";
 import OneItem from "./item";
+import useGlobalStyles from "../styles";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
     right: 7,
-    // The border color match the background color.
-    border: `2px solid ${
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[900]
-    }`
+    boxShadow: "0 0 2px 0 #DD2E34",
+    backgroundColor: "#FFE20C",
+    color: "#111f33"
   }
 }))(Badge);
 
@@ -39,6 +37,7 @@ export default ({
   onInvitations
 }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const { t } = useTranslation();
 
   return (
@@ -48,11 +47,12 @@ export default ({
           <Tabs
             value="projects"
             indicatorColor="primary"
-            textColor="primary"
+            className={globalClasses.textColor}
             variant="fullWidth"
           >
             <Tab value="projects" label={t("Projects")} onClick={onProjects} />
             <Tab
+              className={`${globalClasses.textColor} ${globalClasses.collapseAndTabs}`}
               value="invitations"
               onClick={onInvitations}
               label={
@@ -65,7 +65,7 @@ export default ({
         }
         content={
           <Container>
-            <List>
+            <List className={globalClasses.textColor}>
               {projects.map(project => (
                 <OneItem
                   key={project._id}

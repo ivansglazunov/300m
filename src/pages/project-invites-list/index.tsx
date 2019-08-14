@@ -17,20 +17,15 @@ export default withTracker(() => {
     <Area
       content={
         <ProjectInvites
-          title={t("Title")}
           name="Сапрыкин А.Ф."
           description="Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
           consectetur, neque doloribus, cupiditate numquam dignissimos laborum
           fugiat deleniti."
           address="Стремянный переулок, 38 Москва, Россия, 115054"
-          stages={t("stages")}
           onUser={() => history.push("/user")}
-          onAccept={() => history.push("/project-member")}
-          onRefuse={() => history.push("/")}
           dateStartInvitation="22.08"
           dayDuration="2"
           hourDuration="16"
-          time="10:45"
           onProjects={() => history.push("/projects-list")}
           onInvitations={() => history.push("/project-invites-list")}
         />
