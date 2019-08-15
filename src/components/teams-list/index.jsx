@@ -1,15 +1,9 @@
 import React from "react";
 
-import {
-  makeStyles,
-  List,
-  Container,
-  Badge,
-  withStyles
-} from "@material-ui/core";
+import { makeStyles, List, Container } from "@material-ui/core";
 
-import { Area } from "../slice-area";
 import NewItem from "./new-item";
+import useGlobalStyles from "../styles";
 
 import { useTranslation } from "react-i18next";
 
@@ -21,21 +15,18 @@ const useStyles = makeStyles(theme => ({
 
 export default ({ onTeam, teams }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const { t } = useTranslation();
 
   return (
     <>
-      <Area
-        content={
-          <Container>
-            <List>
-              {teams.map(team => (
-                <NewItem key={team._id} {...team} onTeam={onTeam} />
-              ))}
-            </List>
-          </Container>
-        }
-      />
+      <Container className={globalClasses.paddingForCard}>
+        <List className={globalClasses.textColor}>
+          {teams.map(team => (
+            <NewItem key={team._id} {...team} onTeam={onTeam} />
+          ))}
+        </List>
+      </Container>
     </>
   );
 };

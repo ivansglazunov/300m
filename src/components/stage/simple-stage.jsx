@@ -15,6 +15,8 @@ import { MuiPickersUtilsProvider, TimePicker } from "@material-ui/pickers";
 import MomentUtils from "@date-io/moment";
 import { useTranslation } from "react-i18next";
 
+import useGlobalStyles from "../styles";
+
 const duration = [
   {
     value: "one",
@@ -80,12 +82,17 @@ const useStyles = makeStyles(theme => ({
   root: {
     marginRight: 0,
     marginLeft: -2
+  },
+
+  border: {
+    borderBottom: "1px solid #c8c8c8"
   }
 }));
 
 export default ({}) => {
   const [selectedDate, handleDateChange] = useState(new Date());
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const { t } = useTranslation();
   const [values, setValues] = useState({
     duration: "one"
@@ -107,6 +114,7 @@ export default ({}) => {
         alignItems="center"
         direction="row"
         spacing={2}
+        className={globalClasses.paddingForCard}
       >
         <Grid item xs={6}>
           <MuiPickersUtilsProvider
@@ -115,6 +123,7 @@ export default ({}) => {
             onChange={handleDateChange}
           >
             <TimePicker
+              className={classes.border}
               clearable
               ampm={false}
               label="24 hours"
@@ -125,6 +134,7 @@ export default ({}) => {
         </Grid>
         <Grid item xs={6}>
           <TextField
+            className={classes.border}
             fullWidth
             id="outlined-select-duration"
             select
@@ -147,6 +157,7 @@ export default ({}) => {
         </Grid>
       </Grid>
       <InfiniteCalendar
+        className={globalClasses.shadowCard}
         width="100%"
         displayOptions={{
           showHeader: false,
@@ -175,6 +186,7 @@ export default ({}) => {
       />
       <div>
         <TextField
+          className={globalClasses.textFieldBoderColor}
           fullWidth
           value={valueAddress}
           margin="dense"

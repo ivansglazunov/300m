@@ -22,20 +22,20 @@ import { Search } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
+// import {classNames} from 'classnames';
+import classNames from "classnames";
+
 import Favorite from "../add-to-teams";
 import { Area } from "../slice-area/index";
+import useGlobalStyles from "../styles";
+
 import { useTranslation } from "react-i18next";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
     right: -11,
-    // The border color match the background color.
-    border: `2px solid ${
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[900]
-    }`
+    boxShadow: "0 0 2px 0 #DD2E34"
   }
 }))(Badge);
 
@@ -52,6 +52,7 @@ export default ({
   onCancel
 }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const [value, setValue] = useState("search");
   const { t } = useTranslation();
 
@@ -66,13 +67,24 @@ export default ({
           <Tabs
             value={value}
             indicatorColor="primary"
-            textColor="primary"
             variant="fullWidth"
             onChange={handleChange}
+            // className={globalClasses.textColor} не нужно
           >
-            <Tab value="search" label={t("Search")} />
+            <Tab
+              value="search"
+              // className={classNames({[globalClasses.collapseAndTabs] : !value })}
+              className={classNames(globalClasses.textColor, {
+                [globalClasses.collapseAndTabs]: value !== "search"
+              })}
+              label={t("Search")}
+            />
             <Tab
               value="checked"
+              // className={globalClasses.textColor}
+              className={classNames(globalClasses.textColor, {
+                [globalClasses.collapseAndTabs]: value !== "checked"
+              })}
               label={
                 <StyledBadge badgeContent={1} color="primary">
                   <span>{t("Checked")}</span>
@@ -92,6 +104,7 @@ export default ({
                     type="search"
                     className={classes.textField}
                     margin="dense"
+                    classes={{ root: globalClasses.textFieldBoderColor }}
                     variant="outlined"
                     fullWidth
                     InputProps={{
@@ -117,6 +130,7 @@ export default ({
                         />
                       </ListItemAvatar>
                       <ListItemText
+                        className={globalClasses.textColor}
                         primary="Петров П.С."
                         secondary={t("Short description of the worker")}
                       />
@@ -146,6 +160,7 @@ export default ({
                         />
                       </ListItemAvatar>
                       <ListItemText
+                        className={globalClasses.textColor}
                         primary="Семенов Ф.А."
                         secondary={t("Short description of the worker")}
                       />
@@ -167,7 +182,11 @@ export default ({
         }
         bottom={
           <>
-            <Button className={classes.margin} onClick={onCancel}>
+            <Button
+              // className={classes.margin}
+              className={`${globalClasses.refuse} ${classes.margin}`}
+              onClick={onCancel}
+            >
               {t("cancel")}
             </Button>
             <Button

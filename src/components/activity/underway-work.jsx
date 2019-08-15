@@ -12,6 +12,8 @@ import {
 import { AvTimer } from "@material-ui/icons";
 import { red } from "@material-ui/core/colors";
 
+import useGlobalStyles from "../styles";
+
 const useStyles = makeStyles(theme => ({
   root: {
     marginBottom: 3
@@ -38,6 +40,7 @@ export default ({
   onProject
 }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
 
   return (
     <>
@@ -45,12 +48,12 @@ export default ({
         disablePadding={true}
         button
         onClick={onProject}
-        style={{ backgroundColor: "rgba(255, 235, 59, 0.5)" }}
+        className={globalClasses.yellowBackground}
       >
         <ListItem dense>
           <ListItemAvatar>
             <Avatar
-              style={{ color: "#fff", backgroundColor: red[500], margin: 10 }}
+              style={{ color: "#fff", backgroundColor: "#DD2E34", margin: 10 }}
             >
               <AvTimer />
             </Avatar>
@@ -61,19 +64,39 @@ export default ({
             primary={titleUnderway}
             secondary={
               <>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {addressUnderway}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {passedUnderway}&emsp;{timePassedUnderway}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {leftUnderway}&emsp;{timeLeftUnderway}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {descriptionStageUnderway}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {descriptionWorkUnderway}
                 </Typography>
               </>

@@ -31,6 +31,7 @@ export default withTracker(() => {
             {
               _id: "a",
               name: "Papa Johns",
+              groupActive: true,
               stages: [
                 { address: "Москва, Ветошный пер. 12", start: moment() },
                 {
@@ -39,8 +40,8 @@ export default withTracker(() => {
                 }
               ]
             },
-            { _id: "b", name: "Cap Sanders", stages: [] },
-            { _id: "c", name: "Ronald MacDonald" }
+            { _id: "b", name: "Cap Sanders", stages: [], groupActive: true },
+            { _id: "c", name: "Ronald MacDonald", groupActive: false }
           ]}
           onUser={() => history.push("/user")}
           // name='Иванов А.П.'

@@ -11,13 +11,15 @@ import {
   Card,
   CardContent,
   IconButton,
-  Container
+  Container,
+  Divider
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { Edit } from "@material-ui/icons";
 
 import { Link } from "react-router-dom";
 
+import useGlobalStyles from "../styles";
 import Accept from "../activity/accept";
 import Refuse from "../activity/refuse";
 
@@ -34,11 +36,7 @@ const StyledBadge = withStyles(theme => ({
   }
 }))(Badge);
 
-const useStyles = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1)
-  }
-}));
+const useStyles = makeStyles(theme => ({}));
 
 export default ({
   title,
@@ -55,16 +53,17 @@ export default ({
   onAccept
 }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const globalClasses = useGlobalStyles();
 
   return (
-    <Container>
-      <Card>
+    <Container className={globalClasses.paddingForCard}>
+      <Card className={globalClasses.shadowCard}>
         <CardContent>
           <IconButton
             style={{ float: "right", padding: 0 }}
             aria-label="Edit"
             onClick={onEdit}
+            className={globalClasses.textColor}
           >
             <Edit />
           </IconButton>
@@ -90,6 +89,7 @@ export default ({
         timeAccept={timeAccept}
         onAccept={onAccept}
       />
+      <Divider />
       <Refuse
         descriptionRefuse={descriptionRefuse}
         titleRefuse={titleRefuse}

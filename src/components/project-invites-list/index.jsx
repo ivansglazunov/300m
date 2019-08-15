@@ -32,7 +32,6 @@ const StyledBadge = withStyles(theme => ({
     top: "45%",
     right: 7,
     boxShadow: "0 0 2px 0 #DD2E34",
-    backgroundColor: "#FFE20C",
     color: "#111f33"
   }
 }))(Badge);
@@ -115,7 +114,7 @@ export default ({
         }
         content={
           <Container className={globalClasses.paddingForCard}>
-            <Card className={globalClasses.shadow.shadowCard}>
+            <Card className={globalClasses.shadowCard}>
               <List dense>
                 <ListItem>
                   <ListItemText
@@ -189,7 +188,7 @@ export default ({
                 in={open}
                 timeout="auto"
                 unmountOnExit
-                className={classes.collapseContainer}
+                className={globalClasses.collapseAndTabs}
               >
                 <CardContent>
                   <Typography variant="body1" gutterBottom>

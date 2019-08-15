@@ -11,16 +11,15 @@ import {
 import { withStyles } from "@material-ui/core/styles";
 import { StarRate, Done } from "@material-ui/icons";
 
+import classNames from "classnames";
+
+import useGlobalStyles from "../styles";
+
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
     right: -11,
-    // The border color match the background color.
-    border: `2px solid ${
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[900]
-    }`
+    boxShadow: "0 0 1px 0 #DD2E34"
   }
 }))(Badge);
 
@@ -30,8 +29,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ className }) => {
+export default ({ active, className }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
   function handleClick(event) {
@@ -44,7 +44,14 @@ export default ({ className }) => {
 
   return (
     <>
-      <IconButton onClick={handleClick} className={className}>
+      <IconButton
+        onClick={handleClick}
+        className={classNames(
+          { [globalClasses.starNonFavorite]: !active },
+          { [globalClasses.starFavorite]: active },
+          className
+        )}
+      >
         <StarRate />
       </IconButton>
       <Menu
@@ -53,6 +60,7 @@ export default ({ className }) => {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        className={globalClasses.shadowCard}
       >
         <div
           style={{
@@ -88,6 +96,7 @@ export default ({ className }) => {
             paddingRight: 10,
             paddingLeft: 10
           }}
+          classes={{ root: globalClasses.textFieldBoderColor }}
           margin="dense"
           variant="outlined"
           multiline

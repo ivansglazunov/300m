@@ -12,6 +12,8 @@ import {
 import { Close } from "@material-ui/icons";
 import { blue } from "@material-ui/core/colors";
 
+import useGlobalStyles from "../styles";
+
 const useStyles = makeStyles(theme => ({
   root: {
     marginBottom: 3
@@ -28,6 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 export default ({ titleRefuse, descriptionRefuse, timeRefuse, onProject }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
 
   return (
     <>
@@ -41,15 +44,16 @@ export default ({ titleRefuse, descriptionRefuse, timeRefuse, onProject }) => {
             </Avatar>
           </ListItemAvatar>
           <ListItemText
+            className={globalClasses.textColor}
             classes={{ primary: classes.primary }}
             primaryTypographyProps={{ variant: "h6" }}
             primary={titleRefuse}
             secondary={
               <>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography component="p" variant="body2">
                   {descriptionRefuse}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography component="p" variant="body2">
                   {timeRefuse}
                 </Typography>
               </>

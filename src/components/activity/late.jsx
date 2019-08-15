@@ -12,6 +12,8 @@ import {
 import { Warning } from "@material-ui/icons";
 import { red } from "@material-ui/core/colors";
 
+import useGlobalStyles from "../styles";
+
 const useStyles = makeStyles(theme => ({
   root: {
     marginBottom: 3
@@ -38,6 +40,7 @@ export default ({
   onProject
 }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
 
   return (
     <>
@@ -45,12 +48,16 @@ export default ({
         disablePadding={true}
         button
         onClick={onProject}
-        style={{ backgroundColor: "#ee44448a" }}
+        className={globalClasses.redBackground}
       >
         <ListItem dense>
           <ListItemAvatar>
             <Avatar
-              style={{ color: "#fff", backgroundColor: red[500], margin: 10 }}
+              style={{
+                color: "#111f33",
+                backgroundColor: "#FFE20C",
+                margin: 10
+              }}
             >
               <Warning />
             </Avatar>
@@ -61,19 +68,39 @@ export default ({
             primary={titleLate}
             secondary={
               <>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {addressLate}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {passedLate}&emsp;{timePassedLate}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {leftLate}&emsp;{timeLeftLate}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {descriptionStageLate}
                 </Typography>
-                <Typography component="p" variant="body2" color="textPrimary">
+                <Typography
+                  component="p"
+                  variant="body2"
+                  className={globalClasses.blackText}
+                >
                   {descriptionWorkLate}
                 </Typography>
               </>

@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 
 import { Area } from "../slice-area/index";
+import useGlobalStyles from "../styles";
 
 const useStyles = makeStyles(theme => ({
   margin: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
 
 export default ({ title, description, onCancel, onSave, saveContent }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const [valueTit, setValueTitle] = useState(title);
   const [valueDesc, setValueDesc] = useState(description);
   const { t } = useTranslation();
@@ -27,10 +29,11 @@ export default ({ title, description, onCancel, onSave, saveContent }) => {
   return (
     <Area
       content={
-        <Container>
-          <Card>
+        <Container className={globalClasses.paddingForCard}>
+          <Card className={globalClasses.shadowCard}>
             <CardContent>
               <TextField
+                className={globalClasses.textFieldBoderColor}
                 fullWidth
                 value={valueTit}
                 margin="dense"
@@ -40,6 +43,7 @@ export default ({ title, description, onCancel, onSave, saveContent }) => {
                 onChange={event => setValueTitle(event.target.value)}
               />
               <TextField
+                className={globalClasses.textFieldBoderColor}
                 fullWidth
                 value={valueDesc}
                 margin="dense"
@@ -55,7 +59,10 @@ export default ({ title, description, onCancel, onSave, saveContent }) => {
       }
       bottom={
         <>
-          <Button className={classes.margin} onClick={onCancel}>
+          <Button
+            className={`${classes.margin} ${globalClasses.refuse}`}
+            onClick={onCancel}
+          >
             {t("cancel")}
           </Button>
           <Button color="primary" className={classes.margin} onClick={onSave}>

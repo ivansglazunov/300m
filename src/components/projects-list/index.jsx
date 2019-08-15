@@ -47,8 +47,8 @@ export default ({
           <Tabs
             value="projects"
             indicatorColor="primary"
-            className={globalClasses.textColor}
             variant="fullWidth"
+            className={globalClasses.textColor}
           >
             <Tab value="projects" label={t("Projects")} onClick={onProjects} />
             <Tab

@@ -16,6 +16,8 @@ import {
 
 import { ExpandMore, ExpandLess, Edit, Map } from "@material-ui/icons";
 
+import useGlobalStyles from "../styles";
+
 const useStyles = makeStyles(theme => ({
   margin: {
     margin: theme.spacing(1)
@@ -31,6 +33,7 @@ export default ({
   onUser
 }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const [open, setOpen] = useState(false);
 
   function handleClick() {
@@ -51,10 +54,11 @@ export default ({
               style={{ paddingTop: 0, paddingBottom: 0 }}
             >
               <ListItemText
+                classes={{ primary: globalClasses.textColor }}
                 primary={title}
                 secondary={
                   !open ? (
-                    <div>
+                    <div className={globalClasses.textColor}>
                       <Typography variant="caption">
                         {address}
                         <br />
@@ -67,10 +71,17 @@ export default ({
             </ListItem>
           </List>
           <ExpansionPanelActions style={{ width: "100%", padding: 0 }}>
-            <IconButton aria-label="Edit" onClick={onEdit}>
+            <IconButton
+              aria-label="Edit"
+              onClick={onEdit}
+              className={globalClasses.textColor}
+            >
               <Edit />
             </IconButton>
-            <IconButton onClick={handleClick}>
+            <IconButton
+              onClick={handleClick}
+              className={globalClasses.textColor}
+            >
               {open ? <ExpandLess /> : <ExpandMore />}
             </IconButton>
           </ExpansionPanelActions>
@@ -109,7 +120,7 @@ export default ({
             >
               <ListItemText primary={address} />
               <ListItemSecondaryAction>
-                <IconButton edge="end">
+                <IconButton edge="end" className={globalClasses.textColor}>
                   <Map />
                 </IconButton>
               </ListItemSecondaryAction>

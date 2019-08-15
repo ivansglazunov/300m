@@ -25,9 +25,14 @@ import {
 } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 
+import useGlobalStyles from "../styles";
+
 const useStyles = makeStyles(theme => ({
   margin: {
     margin: theme.spacing(1)
+  },
+  border: {
+    borderBottom: "1px solid #c8c8c8"
   }
 }));
 
@@ -43,14 +48,16 @@ export default ({
   const [valueAddress, setValueAddress] = useState(address);
   const [selectedDate, handleDateChange] = useState(new Date());
   const { t } = useTranslation();
+  const globalClasses = useGlobalStyles();
 
   return (
     <>
       <Area
         content={
-          <Container>
+          <Container className={globalClasses.paddingForCard}>
             <TextField
               fullWidth
+              className={globalClasses.textFieldBoderColor}
               value={valueTit}
               margin="dense"
               label={title}
@@ -59,6 +66,7 @@ export default ({
               onChange={event => setValueTitle(event.target.value)}
             />
             <TextField
+              className={globalClasses.textFieldBoderColor}
               fullWidth
               value={valueDesc}
               margin="dense"
@@ -74,6 +82,7 @@ export default ({
               alignItems="center"
               direction="row"
               spacing={2}
+              className={globalClasses.paddingForCard}
             >
               <Grid item xs={6}>
                 <MuiPickersUtilsProvider
@@ -83,6 +92,7 @@ export default ({
                   onChange={handleDateChange}
                 >
                   <DateTimePicker
+                    className={classes.border}
                     fullWidth
                     value={selectedDate}
                     onChange={handleDateChange}
@@ -91,12 +101,14 @@ export default ({
               </Grid>
               <Grid item xs={6}>
                 <MuiPickersUtilsProvider
+                  className={globalClasses.textFieldBoderColor}
                   utils={MomentUtils}
                   label={t("To")}
                   value={selectedDate}
                   onChange={handleDateChange}
                 >
                   <DateTimePicker
+                    className={classes.border}
                     fullWidth
                     value={selectedDate}
                     onChange={handleDateChange}
@@ -105,6 +117,7 @@ export default ({
               </Grid>
             </Grid>
             <TextField
+              className={globalClasses.textFieldBoderColor}
               fullWidth
               value={valueAddress}
               margin="dense"
@@ -120,6 +133,7 @@ export default ({
                   width: "100%",
                   height: 240
                 }}
+                className={globalClasses.shadowCard}
                 state={{
                   center: [55.820328, 37.64223],
                   zoom: 9,
@@ -145,7 +159,9 @@ export default ({
         }
         bottom={
           <>
-            <Button onClick={onCancel}>{t("cancel")}</Button>
+            <Button onClick={onCancel} className={globalClasses.refuse}>
+              {t("cancel")}
+            </Button>
             <Button color="primary" onClick={onSave}>
               {t("save")}
             </Button>

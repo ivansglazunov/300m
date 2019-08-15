@@ -12,6 +12,8 @@ import {
 import { Alarm } from "@material-ui/icons";
 import { blue } from "@material-ui/core/colors";
 
+import useGlobalStyles from "../styles";
+
 const useStyles = makeStyles(theme => ({
   root: {
     marginBottom: 3
@@ -36,6 +38,7 @@ export default ({
   onProject
 }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
 
   return (
     <>
@@ -49,7 +52,7 @@ export default ({
             </Avatar>
           </ListItemAvatar>
           <ListItemText
-            classes={{ primary: classes.primary }}
+            classes={{ primary: globalClasses.textColor }}
             primaryTypographyProps={{ variant: "h6" }}
             primary={titleStartSoon}
             secondary={

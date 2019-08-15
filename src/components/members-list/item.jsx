@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   ListItem,
@@ -18,23 +18,21 @@ import { ExpandMore, ExpandLess } from "@material-ui/icons";
 import { useTranslation } from "react-i18next";
 
 import Favorite from "../add-to-teams/";
+import useGlobalStyles from "../styles";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
     right: -11,
-    // The border color match the background color.
-    border: `2px solid ${
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[900]
-    }`
+    boxShadow: "0 0 2px 0 #DD2E34",
+    color: "#111f33"
   }
 }))(Badge);
 
-export default ({ name, stages, onUser }) => {
+export default ({ name, stages, onUser, groupActive }) => {
   // const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const globalClasses = useGlobalStyles();
+  const [open, setOpen] = useState(true);
   const { t } = useTranslation();
 
   function handleClick() {
@@ -63,11 +61,16 @@ export default ({ name, stages, onUser }) => {
           }
         />
         <ListItemAvatar>
-          <Favorite />
+          <Favorite active={groupActive} />
         </ListItemAvatar>
         <ListItemSecondaryAction>
           {stages ? (
-            <IconButton onClick={handleClick} disabled={!stages.length}>
+            <IconButton
+              color="primary"
+              onClick={handleClick}
+              disabled={!stages.length}
+              classes={{ colorPrimary: globalClasses.textColor }}
+            >
               {open ? <ExpandLess /> : <ExpandMore />}
             </IconButton>
           ) : null}

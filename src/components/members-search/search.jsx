@@ -21,6 +21,8 @@ import { Link } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
+import useGlobalStyles from "../styles";
+
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: "45%",
@@ -46,6 +48,7 @@ const useStyles = makeStyles(theme => ({
 
 export default ({ onSelectStages }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const [value, setValue] = useState("search");
   const { t } = useTranslation();
 
@@ -73,6 +76,7 @@ export default ({ onSelectStages }) => {
                 />
               </ListItemAvatar>
               <ListItemText
+                classes={{ primary: globalClasses.textColor }}
                 primary="Семенов Ф.А."
                 secondary={t("Short description of the worker")}
               />
@@ -91,6 +95,7 @@ export default ({ onSelectStages }) => {
             id="outlined-search"
             label={t("Search member")}
             type="search"
+            classes={{ root: globalClasses.textFieldBoderColor }}
             className={classes.textField}
             margin="dense"
             variant="outlined"
@@ -118,6 +123,7 @@ export default ({ onSelectStages }) => {
                 />
               </ListItemAvatar>
               <ListItemText
+                classes={{ primary: globalClasses.textColor }}
                 primary="Петров П.С."
                 secondary={t("Short description of the worker")}
               />

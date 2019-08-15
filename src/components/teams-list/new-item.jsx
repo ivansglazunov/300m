@@ -14,7 +14,8 @@ import {
   Button,
   TextField,
   Collapse,
-  List
+  List,
+  Zoom
 } from "@material-ui/core";
 import {
   Edit,
@@ -25,8 +26,10 @@ import {
   Clear
 } from "@material-ui/icons";
 import { useTranslation } from "react-i18next";
+import useGlobalStyles from "../styles";
 
 export default ({ teamDescription, onEdit }) => {
+  const globalClasses = useGlobalStyles();
   const [open, setOpen] = useState(false);
   const [openUser, setOpenUser] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -61,23 +64,29 @@ export default ({ teamDescription, onEdit }) => {
     <>
       <ListItem alignItems="flex-start">
         {!edit ? (
-          <ListItemText primary={teamDescription} style={{ marginRight: 76 }} />
+          <ListItemText primary={teamDescription} style={{ marginRight: 91 }} />
         ) : (
           <TextField
             fullWidth
             margin="dense"
             variant="outlined"
-            style={{ marginRight: 120 }}
+            className={globalClasses.textFieldBoderColor}
           />
         )}
         <ListItemSecondaryAction>
-          <IconButton onClick={onEdit}>
+          <IconButton onClick={onEdit} className={globalClasses.textColor}>
             {!edit ? <Edit /> : <Done />}
           </IconButton>
-          <IconButton onClick={handleOpenDelete}>
+          <IconButton
+            onClick={handleOpenDelete}
+            className={globalClasses.textColor}
+          >
             <DeleteForever />
           </IconButton>
-          <IconButton onClick={handleClickTeamList}>
+          <IconButton
+            onClick={handleClickTeamList}
+            className={globalClasses.textColor}
+          >
             {openCollapse ? <ExpandLess /> : <ExpandMore />}
           </IconButton>
         </ListItemSecondaryAction>
@@ -87,7 +96,10 @@ export default ({ teamDescription, onEdit }) => {
           <ListItem>
             <ListItemText primary="Иванов В.В." />
             <ListItemSecondaryAction>
-              <IconButton onClick={handleOpenDeleteUser}>
+              <IconButton
+                onClick={handleOpenDeleteUser}
+                className={globalClasses.textColor}
+              >
                 <Clear style={{ width: 20, height: 20 }} />
               </IconButton>
             </ListItemSecondaryAction>
@@ -95,7 +107,10 @@ export default ({ teamDescription, onEdit }) => {
           <ListItem>
             <ListItemText primary="Петров А.А." />
             <ListItemSecondaryAction>
-              <IconButton onClick={handleOpenDeleteUser}>
+              <IconButton
+                onClick={handleOpenDeleteUser}
+                className={globalClasses.textColor}
+              >
                 <Clear style={{ width: 20, height: 20 }} />
               </IconButton>
             </ListItemSecondaryAction>
@@ -103,7 +118,10 @@ export default ({ teamDescription, onEdit }) => {
           <ListItem>
             <ListItemText primary="Смирнов С.С." />
             <ListItemSecondaryAction>
-              <IconButton onClick={handleOpenDeleteUser}>
+              <IconButton
+                onClick={handleOpenDeleteUser}
+                className={globalClasses.textColor}
+              >
                 <Clear style={{ width: 20, height: 20 }} />
               </IconButton>
             </ListItemSecondaryAction>
@@ -112,8 +130,9 @@ export default ({ teamDescription, onEdit }) => {
       </Collapse>
       <Divider />
       <Dialog
+        classes={{ paper: globalClasses.shadowCard }}
         open={open}
-        // TransitionComponent={Transition}
+        TransitionComponent={Zoom}
         keepMounted
         onClose={handleClose}
         aria-labelledby="alert-dialog-slide-title"
@@ -128,7 +147,7 @@ export default ({ teamDescription, onEdit }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} className={globalClasses.refuse}>
             {t("Disagree")}
           </Button>
           <Button onClick={handleClose} color="primary">
@@ -137,8 +156,9 @@ export default ({ teamDescription, onEdit }) => {
         </DialogActions>
       </Dialog>
       <Dialog
+        classes={{ paper: globalClasses.shadowCard }}
         open={openUser}
-        // TransitionComponent={Transition}
+        TransitionComponent={Zoom}
         keepMounted
         onClose={handleCloseUser}
         aria-labelledby="alert-dialog-slide-title"
@@ -153,7 +173,7 @@ export default ({ teamDescription, onEdit }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseUser} color="primary">
+          <Button onClick={handleCloseUser} className={globalClasses.refuse}>
             {t("Disagree")}
           </Button>
           <Button onClick={handleCloseUser} color="primary">

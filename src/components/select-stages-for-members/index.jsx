@@ -19,6 +19,8 @@ import {
 import { ExpandMore, ExpandLess } from "@material-ui/icons";
 
 import { Area } from "../slice-area";
+import useGlobalStyles from "../styles";
+
 import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(theme => ({
@@ -42,6 +44,7 @@ export default ({
   onAddMembersToStages
 }) => {
   const classes = useStyles();
+  const globalClasses = useGlobalStyles();
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
 
@@ -52,8 +55,8 @@ export default ({
   return (
     <Area
       content={
-        <Container>
-          <ExpansionPanel expanded={open}>
+        <Container className={globalClasses.paddingForCard}>
+          <ExpansionPanel expanded={open} className={globalClasses.shadowCard}>
             <ExpansionPanelSummary
               aria-controls="panel1bh-content"
               id="panel1bh-header"
@@ -88,7 +91,10 @@ export default ({
                 </ListItem>
               </List>
               <ExpansionPanelActions style={{ width: "100%", padding: 0 }}>
-                <IconButton onClick={handleClick}>
+                <IconButton
+                  onClick={handleClick}
+                  className={globalClasses.textColor}
+                >
                   {open ? <ExpandLess /> : <ExpandMore />}
                 </IconButton>
               </ExpansionPanelActions>
@@ -132,7 +138,7 @@ export default ({
       }
       bottom={
         <>
-          <Button color="primary" onClick={onCancel}>
+          <Button className={globalClasses.refuse} onClick={onCancel}>
             {t("cancel")}
           </Button>
           <Button onClick={onBackToSelectMemebers}>
